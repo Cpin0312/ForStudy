@@ -29,7 +29,6 @@
     winmerge = mergetool -y -t WinMerge
     sts = status
     showlog = log --pretty=format:"[%H][%cd][%cn]:[%s]"
-    pushF = push origin HEAD:master
     cmt = commit -m 
 
 
