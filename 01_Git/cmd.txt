@@ -41,6 +41,8 @@ git checkout [コミットid] [ファイルパス]
 ブランチの改名
 git branch -m [<oldbranch>] <newbranch>
 
+上流Streamの確認
+git branch -vv
 
 git push -f origin HashId:ブランチ名
 // 明示的に上流ブランチを設定（２つは同義）
