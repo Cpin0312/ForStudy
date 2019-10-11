@@ -37,3 +37,6 @@ git reset --hard HEAD
 
 git checkout [コミットid] [ファイルパス]
 特定のファイルのみ、コミットのバージョンを戻したい
+
+ブランチの改名
+git branch -m [<oldbranch>] <newbranch>
