@@ -1,11 +1,21 @@
+Config
 git config --global user.name "Kisaragi"
-git config --global user.email ohcpin@gmail.com
-git remote add origin https://github.com/Cpin0312/ForStudy.git
-git clone https://github.com/Cpin0312/ForStudy.git
-git init
-git branch -a 
-git remote set-url https://github.com/Cpin0312/ForStudy.git
 git config --global user.email "ohcpin@gmail.com"
-git config --global user.name "Kisaragi"
+
+初期設定
+git init
+git clone https://github.com/Cpin0312/ForStudy.git
+git remote set-url https://github.com/Cpin0312/ForStudy.git
+git remote add origin https://github.com/Cpin0312/ForStudy.git
+
+ブランチの追加
 git checkout -b myBranch
+ブランチの変更
 git checkout myBranch
+
+ブランチの確認
+git branch -a 
+
+前回のPUSHを取り消し
+git push -f origin HEAD^:ブランチ名
+git push -f origin HashId:ブランチ名
