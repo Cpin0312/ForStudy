@@ -1,0 +1,11 @@
+git config --global user.name "Kisaragi"
+git config --global user.email ohcpin@gmail.com
+git remote add origin https://github.com/Cpin0312/ForStudy.git
+git clone https://github.com/Cpin0312/ForStudy.git
+git init
+git branch -a 
+git remote set-url https://github.com/Cpin0312/ForStudy.git
+git config --global user.email "ohcpin@gmail.com"
+git config --global user.name "Kisaragi"
+git checkout -b myBranch
+git checkout myBranch
