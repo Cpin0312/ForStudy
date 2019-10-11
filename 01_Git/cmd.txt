@@ -1,0 +1,39 @@
+Config
+git config --global user.name "Kisaragi"
+git config --global user.email "ohcpin@gmail.com"
+
+初期設定
+git init
+git clone https://github.com/Cpin0312/ForStudy.git
+git remote set-url https://github.com/Cpin0312/ForStudy.git
+git remote add origin https://github.com/Cpin0312/ForStudy.git
+
+Masterの削除
+git push origin :someMaster
+
+Masterのバックアップ
+git push origin master:master_bak
+
+ブランチの追加
+git checkout -b myBranch
+ブランチの変更
+git checkout myBranch
+
+ブランチの確認
+git branch -a 
+
+前回のPUSHを取り消し
+git push -f origin HEAD^:ブランチ名
+git push -f origin HashId:ブランチ名
+
+git reset [ファイル名]
+ステージングを取り下げる。編集内容は残る
+
+git checkout HEAD -- [ファイル名]
+ステージしたファイルを最後にコミットした状態に戻す,つまり編集内容は残らない
+
+git reset --hard HEAD
+編集・ステージングいずれの変更内容を取り消し、最後にコミットした状態に戻す
+
+git checkout [コミットid] [ファイルパス]
+特定のファイルのみ、コミットのバージョンを戻したい
