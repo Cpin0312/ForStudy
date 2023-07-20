@@ -1,0 +1,3 @@
+ステップ数算出
+cd C:\Users\hisol\Desktop\胡(オー)フォルダ\進行中\個人\PI\PI設定\Installer\tk.eclipse.plugin.stepcounter_2.0.0
+java -cp stepcounter.jar tk.stepcounter.Main -format=csv -output=count.txt -encoding=UTF-8 C:\WorkSpace\MIBO

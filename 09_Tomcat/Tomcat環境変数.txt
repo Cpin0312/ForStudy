@@ -1,0 +1,11 @@
+TOMCAT_HOME
+C:\apache-tomcat-8.5.32_LPKL
+
+CATALINA_HOME
+C:\apache-tomcat-8.5.32_LPKL
+
+JAVA_HOME
+C:\PROGRA~1\Java\ojdk-11
+
+JRE_HOME
+C:\PROGRA~1\Java\ojdk-11

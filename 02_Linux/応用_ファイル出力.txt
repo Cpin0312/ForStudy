@@ -1,0 +1,8 @@
+コンソール内容を保存
+TEST=`PGPASSWORD=${PASSWORD} psql -h ${HOST} -U ${USER} -p ${PORT} -d ${DATABASE} -q -c"${SQLQUERY_SELECT}" -t`
+
+コンソール内容のスペースを置き換え■、ファイルに保存
+echo ${TEST} | tr ' ' '\n'  > xxx.txt
+
+コンソールなしで、ファイルに書き込む
+TEXT=`echo ${TEST} | tr ' ' '\n'  > xxx.txt`

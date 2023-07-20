@@ -1,0 +1,11 @@
+
+
+DROP DATABASE lpklLocal;
+DROP SCHEMA schema_lpkl  ;
+DROP USER lpkluser  ;
+DROP login loginuser;
+
+
+サポートしているステートメント: RESTORE。
+
+新しく復元したデータベースへのアクセスを、db_owner、dbcreator、または sysadmin ロールのメンバーに制限します。 RESTRICTED_USER は、DBO_ONLY に置き換わるオプションです。 DBO_ONLY は、SQL Server 2008 で廃止されました

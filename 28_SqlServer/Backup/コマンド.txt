@@ -1,0 +1,42 @@
+sqlcmd -S LOCALHOST -U lpkluser -P lpkluser -i  N'C:\Users\hisol\Desktop\sqlsvBK\Script.sql' > C:\Users\hisol\Desktop\sqlsvBK\Backup.log
+
+
+BACKUP DATABASE lpklLocal TO DISK=N'C:\Users\hisol\Desktop\sqlsvBK\lpklLocal.BAK' WITH INIT
+GO
+
+C:\Program Files\Microsoft SQL Server\MSSQL13.SQLEXPRESS\MSSQL\Backup\lpklLocal.bak
+
+
+sqlcmd -S LOCALHOST -U lpkluser -P lpkluser -Q “RESTORE DATABASE lpklLocal FROM DISK = N’C:\Users\hisol\Desktop\sqlsvBK\lpklLocal.bak’ WITH REPLACE” > C:\Users\hisol\Desktop\sqlsvBK\restore.log
+
+
+BACKUP DATABASE lpklLocal TO DISK = N'C:\Users\hisol\Desktop\sqlsvBK\Test2.bak' WITH INIT, COMPRESSION;
+
+sqlcmd -S LOCALHOST -E -Q "BACKUP DATABASE lpklLocal TO DISK = N'C:\Users\hisol\Desktop\sqlsvBK\Test2.bak' WITH INIT, COMPRESSION;"
+
+
+
+NT Service\MSSQL$SQLEXPRESS
+NT Service\MSSQL$SQLEXPRESS
+NT Service\MSSQL$SQLEXPRESS
+
+
+バックアップ・リストア可能
+条件
+①サービスのログイン情報を要修正
+②ログインユーザがdbcreatorの権限
+
+手順（バックアップ）
+①DBを指定し、「タスク」⇒「バックアップ」
+
+手順（リストア）
+①DBを指定し、「タスク」⇒「DB復元」
+
+
+
+sqlcmd -S LOCALHOST -U lpkluser -P lpkluser -Q "RESTORE DATABASE lpklLocal FROM DISK = N'C:\PI_LPKL\gitLocal\LPKL_point\prog\Release\DDL\bat\dumpFile\lpklLocal.BAK' WITH REPLACE"
+
+
+DROP login lpkluser;
+
+DROP DATABASE lpklLocal

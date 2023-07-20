@@ -1,0 +1,177 @@
+GIT使い方
+
+git config --local user.name sea_mountain
+git config --local user.email valid_email@example.com
+git commit --amend
+
+git fetch
+git merge
+
+状態確認（-s 省略）
+git status
+git status -s
+
+git add
+git rm
+
+Gitのクロン
+git clone C:/SpcPoint/GitLocal/git_hisol/.git C:/SpcPoint/GitLocal/git_hisol_lib
+
+Gitのクロン				ブランチ指定
+git clone -b hisol-trunk https://web.deplas.itg.hitachi.co.jp/SHD_SPC/git_hisol
+
+インデックスを（直前のコミット状態に）リセットしている
+git reset HEAD
+git reset HEAD^
+git reset HEAD^^
+
+ファイル・フォルダ指定
+git reset 対象
+
+コメントキャンセルの場合
+:qa!
+
+LF⇒CRLFの自動変更設定
+git config --system core.autocrlf false
+git config --global core.autocrlf false
+git config --local core.autocrlf false
+
+確認方法
+git config core.autocrlf
+
+全設定確認
+git config --list
+
+origin: レポジトリの場所(URL)の別名
+master: ブランチの名前
+どのレポジトリ」の「どのブランチ」
+
+レポジトリの追加
+git remote add bitbucket https://ユーザ名@bitbucket.org/ユーザ名/レポジトリ名.git
+
+ブランチを指定し、プッシュ
+git push -b bitbucket master
+
+現在のブランチから派生ブランチを作成する
+git branch BN
+
+作業ブランチを変更する
+git checkout BN
+
+上記２つを一度に行う
+git checkout -b BN
+
+ローカルブランチを確認する
+git branch
+
+リモートブランチを確認する
+git branch -r
+
+上記２つを一度に行う
+git branch -a
+
+現在の作業ブランチに指定ブランチをマージする
+git merge BN
+
+マージ後でも、元に戻せるようにする
+git merge --no-ff BN
+
+ブランチの削除
+git branch -d BN
+
+ブランチの削除(強制的)
+git branch -D BN
+
+リモート・リポジトリにブランチをプッシュする
+git push origin BN
+
+リモートブランチからローカルブランチを作成する
+git checkout -b BN origin/BN
+
+リモートリポジトリのブランチを取得して、ローカルブランチとする
+git fetch origin RemoteBN:LocalBN
+
+リモートブランチを削除する
+git push origin :BN
+
+ブランチの派生元ブランチを変更する
+git rebase BN
+
+ブランチを比較する
+git diff BN1 BN2
+
+ブランチを比較する
+git diff -- 対象ファイル
+
+system
+システム全体に反映。ファイルは/etc/gitconfigに作られる。
+global
+ユーザ全体 。ファイルは~/.gitconfigに作られる。
+local
+対象リポジトリのみ。ファイルは./.git/configに作られる
+
+Ignore対象
+git ls-files --full-name -i --exclude-from=.gitignore
+
+git show
+最新 Commit 内容表示
+
+git log --oneline
+git log --pretty=oneline
+git log --pretty=format:"%h [%cn]%s"
+git log --pretty=format:"%h [%cn] [%cd] %s" -n 50
+git log --pretty=[%cn][%cd]%s --date=format:'%Y%m%d %H%M%S' | grep 20190827
+git log --pretty=[%cn][%cd]%s --date=format:'%Y%m%d %H%M%S' --committer=OU --name-status -n 40 
+
+ブランチを作成
+git checkout [コミット番号] [ファイルパス]
+
+ブランチを作成
+git checkout -b [リモートブランチ] [ロカールブランチ]
+
+git branch -m <古いブランチ名> <新しいブランチ名>
+
+git branch --delete foo
+
+git pull [リモートブランチ] [ロカールブランチ]
+
+git branch --set-upstream-to=[リモートブランチ] [ロカールブランチ]
+
+上流ブランチを確認
+git branch -vv
+
+上流ブランチを明示的に上流ブランチを設定（２つは同義）
+git branch [ロカールブランチ] -u [リモートブランチ]
+git branch [ロカールブランチ] --set-upstream-to=[リモートブランチ]
+
+ローカルブランチ名を省略すると、自動的に現在のブランチを設定
+git branch -u <リモートブランチ名>
+git branch --set-upstream-to=[リモートブランチ]
+
+git branch で新規ブランチを作成するとき、--track (-t) オプションをつける
+git branch new-branch --track origin/remote-branch-name
+
+ロカールブランチをレポジトリにプッシュ
+git push -u origin <リモートブランチ名>
+
+化け文字解消
+git config --global core.quotepath false
+
+Addの内容を取り消す
+git reset HEAD 対象ファイル
+
+Git コメント
+git commit --amend
+
+git rm -r [削除したいディレクトリ]
+git rm  [削除したいファイ]
+
+設定確認
+vi .git/config
+
+差分を退避
+git stash 
+
+
+退避した差分を戻す
+git stash pop

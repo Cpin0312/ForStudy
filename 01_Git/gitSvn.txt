@@ -1,0 +1,2 @@
+Clone
+git svn clone https://web.deplas.itg.hitachi.co.jp/menicoin/svn/trunk

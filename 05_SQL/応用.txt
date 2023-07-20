@@ -1,0 +1,45 @@
+説明
+
+〇 テーブルの作成
+∟CREATE TABLE CardInfo (CardID nchar(6),CustomerID nchar(5),IssueDate date,ExpireDate date,EmployeeID int);
+
+〇 登録文
+∟Insert into CardInfo values ('aaa','aab','20190926','20190926','12');
+
+〇 更新文
+∟Update CardInfo set EmployeeID = 999 Where CardID = 'aaa';
+
+〇 削除文(データ)
+∟Delete from CardInfo Where CardID = 'aaa';
+
+〇 削除文(テーブル)
+∟Drop table CardInfo cascade;
+※【cascade】が書かれた場合、関係性的なものも消されます。
+
+存在チェック
+SELECT EXISTS (SELECT * FROM CardInfo);
+
+項目追加
+ALTER TABLE [テーブル1] ADD [カラム1] [データ型] [NULL or NOT NULL];
+
+
+ALTER TABLE [テーブル1] ALTER COLUMN [カラム1] [新しいデータ型];
+
+ALTER TABLE [テーブル1] DROP COLUMN [カラム1];
+
+
+
+ON CONFLICTの応用
+?Insert, on conflict - do nothing.
+insert into dummy(id, name, size) values(1, 'new_name', 3) on conflict do nothing; 
+
+
+?Insert, on conflict - do update, specify conflict target via column.
+insert into dummy(id, name, size) values(1, 'new_name', 3) on conflict(id) do update set name = 'new_name', size = 3; 
+
+
+?Insert, on conflict - do update, specify conflict target via constraint name.
+insert into dummy(id, name, size) values(1, 'new_name', 3) on conflict on constraint dummy_pkey do update set name = 'new_name', size = 4;
+
+Upsert基本
+INSERT INTO test (whatever, counter) SELECT 123, 1 WHERE NOT EXISTS (SELECT * FROM test WHERE whatever = 123);

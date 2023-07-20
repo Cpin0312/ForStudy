@@ -1,0 +1,45 @@
+PSQLの実行
+
+●SQLの実行
+∟PGPASSWORD=piadmin psql -h 10.211.247.104 -p 5432 -U piadmin -d ct1db -q -c"SQL文" > drop{date}.sql
+
+●DBダンプ
+∟PGPASSWORD=パスワード pg_dump -U ユーザー データベース名 | gzip > データベース名.sql.gz
+
+●DBリストア
+∟gzip -cd 対象.sql.gz | PGPASSWORD=パスワード  psql -h ホスト  -U ユーザー -d データベース名 
+
+▲サンプル
+∟PGPASSWORD=piadmin psql -h 10.211.247.104 -p 5432 -U piadmin -d ct1db -q -c"SELECT 'Drop table '||table_name||' cascade;' as Sql FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' order by table_name desc" > drop{date}.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin ct1db | gzip > ct1db.sql.gz
+∟gzip -cd ct1db.sql.gz | PGPASSWORD=sspcpdb01app  psql -h 10.211.247.104  -U sspcpdb01app -d sspcpostgre 
+
+■実行20190925（シェルにて実行しました）
+□Drop文作成
+∟①PGPASSWORD=piadmin psql -h 10.211.247.104 -p 5432 -U piadmin -d ct1db -q -c"SELECT 'Drop table '||table_name||' cascade;' as Sql FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' order by table_name desc" > drop20190925.sql
+∟②PGPASSWORD=piadmin pg_dump -U piadmin ct1db | gzip > ct1db.sql.gz
+∟③gzip -cd ct1db.sql.gz | PGPASSWORD=#okMic32UpG1 psql -h sspcpdb01.cfqprycltynz.ap-northeast-1.rds.amazonaws.com -U sspcpdb01app -d sspcPostgre
+
+◆いろいろ参考
+∟create database 'DB名' owner 'ユーザー名';
+∟PGPASSWORD=piadmin pg_dump --table=MI_ADR_MST --data-only --column-inserts MI_ADR_MST
+∟PGPASSWORD=piadmin pg_dump --table=M_ADDRESS_CODE --data-only --column-inserts sspcpostgre > ./M_ADDRESS_CODE_DATA.sql 
+∟PGPASSWORD=piadmin pg_dump --username=username --table table_name db_name > table_name.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin    -T MI_LIST_MST -T MI_LIST_DETAIL ct1db > exclude-table001.dump
+∟PGPASSWORD=piadmin pg_dump -U piadmin  --column-inserts ct1db > dumpCt1_20190925.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin  -a ct1db > dumpCt1_20190925.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin  ct1db  -T bar foo > exclude-table.dump
+∟PGPASSWORD=piadmin pg_dump -U piadmin  ct1db > dumpCt1_20190925.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin -Fc ct1db > ct1db.dump
+∟PGPASSWORD=piadmin pg_dump -U piadmin -t MI_ADR_MST --data-only ct1db > dumpCt1.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin -t MI_ADR_MST -a ct1db > MI_ADR_MST.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin -t m_address_code --column-inserts ct1db > m_address_code.sql
+∟PGPASSWORD=piadmin pg_dump -U piadmin ct1db  > ct1dbTest.sql
+∟PGPASSWORD=piadmin pg_dump -U 接続ユーザ名 -t テーブル名 --column-inserts データベース名 > 出力.sql
+∟PGPASSWORD=piadmin pg_restore -U piadmin -C -d sspcPostgres ct1db.dump
+∟PGPASSWORD=piadmin pg_restore -U piadmin -C -d sspcpostgres ct1db.dump
+∟PGPASSWORD=piadmin psql -U piadmin -d ct1db -a -f m_address_code.sql > dumpCt1.sql
+∟PGPASSWORD=piadmin psql -h 10.211.247.104 -p 5432 -U piadmin -d ct1db
+
+
+

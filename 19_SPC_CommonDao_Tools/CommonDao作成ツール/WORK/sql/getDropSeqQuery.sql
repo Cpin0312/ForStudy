@@ -1,0 +1,1 @@
+SELECT 'Drop sequence '||c.relname||' cascade;' as Sql FROM pg_class c LEFT join pg_user u ON c.relowner = u.usesysid WHERE c.relkind = 'S';

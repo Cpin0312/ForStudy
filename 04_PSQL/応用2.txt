@@ -1,0 +1,68 @@
+よく使うコマンド
+バージョンを確認する
+$ psql ?version
+# select version();
+ヘルプを表示
+$ psql --help
+# \?
+# \h
+データベース
+データベースに入る
+$ psql <DB_NAME>
+ユーザーを指定してデータベースに入る
+$ psql -U <USER_NAME> <DB_NAME>
+データベースから出る
+# \q
+データベースを起動
+$ postgres -D /usr/local/var/postgres
+データベース一覧表示
+$ psql -l
+# \l
+データベースの切り替え
+# \c <DB_NAME>
+# \connect <DB_NAME>
+データベースを削除
+# drop database <DATABASE_NAME>;
+テーブル
+テーブル一覧表示(viewやsequenceも含む)
+# \d
+テーブル一覧表示
+# \dt
+テーブルのスキーマの詳細を表示
+# \d <TABLE_NAME>
+テーブルのアクセス権限表示
+# \z <TABLE_NAME>
+viewの一覧を表示
+# \dv
+viewの定義を表示
+# select definition from pg_views where viewname = '<VIEW_NAME>';
+テーブル名変更
+# alter table <CURRENT_DB_NAME> rename to <NEW_DB_NAME>;
+テーブルを削除
+# drop table <TABLE_NAME>;
+ユーザー権限
+現在のユーザー(Role)を表示
+# select current_user;
+ユーザー(Role)の一覧を表示
+# \du
+ユーザー情報一覧を表示
+# select * from pg_user;
+ユーザー (Role)に権限を付与
+# grant select, insert, update, delete on <TABLE_NAME> to <USER_NAME>;
+ユーザー (Role)に権限を剥奪
+# revoke select, insert, update, delete on <TABLE_NAME>　from <USER_NAME>;
+ユーザーの切り替え
+# \connect - <USER_NAME>
+スーパーユーザーへ変更
+# alter role <USER_NAME> with creatural superuser;
+スーパーユーザー権限剥奪
+# alter role <USER_NAME> with creatural nosuperuser;
+スキーマ
+スキーマ作成
+# create schema <schema_name>;
+スキーマを確認
+# select current_schema;
+スキーマ一覧
+# \dn
+スキーマ変更
+# set search_path to <schema_name>;

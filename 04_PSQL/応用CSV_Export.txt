@@ -1,0 +1,91 @@
+Export方法(方法は2つある)
+
+[ 環境 ]
+psql (PostgreSQL) 9.5.3
+
+COPYコマンド
+psqlとコマンドうってpostgres内に入ってからコマンド。
+
+カンマ区切り(CSV)
+
+COPY (テーブル名) TO '(ファイルパス)' WITH CSV DELIMITER ',';
+
+COPY users TO '/tmp/users.csv' WITH CSV DELIMITER ',';
+
+これでカンマ区切りで出力される。いわゆるCSV。
+
+NULL文字を空文字に
+
+COPY (テーブル名) TO '(ファイルパス)' WITH CSV NULL AS '';
+
+COPY users TO '/tmp/users.csv' WITH CSV NULL AS '';
+
+指定しなければ、NULL文字が「＼N」という形で出てくる。NULL AS 引用符で、NULL部分を空文字で出力できる。
+
+タブ区切り(TSV)
+
+COPY (テーブル名) TO '(ファイルパス)' WITH CSV DELIMITER E'\t';
+
+COPY users TO '/tmp/users.csv' WITH CSV DELIMITER E'\t';
+
+DELIMITERを「E'\t'」とします。
+DELIMITERは1byteオンリーです。なので\tとか入れる2byteなのでエラーが出ちゃう。
+なので、その前に大文字Eを付けることで2byteDELIMITERが使えるようになります。
+
+カラム名ほしい
+HEADERを付ければOK。
+
+COPY (テーブル名) TO '(ファイルパス)' WITH CSV HEADER；
+
+COPY users TO '/tmp/users.csv' WITH CSV HEADER；
+
+各項目全部を「"(QUOTE)」で囲みたい
+フォースを使うんじゃ！
+
+COPY (テーブル名) TO '(ファイルパス)' WITH CSV FORCE QUOTE *；
+
+COPY users TO '/tmp/users.csv' WITH CSV FORCE QUOTE *；
+
+エクセルでCSV加工したい人！！！
+つまりは
+* タブ区切りで、
+* 引用符(QUOTE)で囲んで、
+* NULL文字は空文字化したい
+* カラム名も表示
+
+フォースを使うん（ｒｙ
+
+COPY (テーブル名) TO '(ファイルパス)' WITH CSV DELIMITER E'\t' FORCE QUOTE * NULL AS '' HEADER;
+
+COPY users TO '/tmp/users.csv' WITH CSV DELIMITER E'\t' FORCE QUOTE * NULL AS '' HEADER;
+
+後は文字コードがSJISになってれば完璧ですね！！
+(UTF-8とかで出力してきたらiconvコマンドとかでSJIS化するだけです)
+
+※export先予定のファイルが既に存在するときには上書きされます。
+
+psqlコマンド
+こっちはpsqlで入る前。シェル状態で使う。
+
+カンマ区切り(CSV) & NULL文字を空文字に
+
+psql データベース名 -c "SQL文" -A -F, > CSVファイル名
+
+こっちでもいい。
+-Fは、フォーマットオプションでデフォルトは「,(カンマ)」。
+
+タブ区切り(TSV)
+
+psql データベース名 -c "SQL文" -A -F $'\t' > CSVファイル名
+
+タブ区切り(tsv)ならタブであることを明記。
+
+※export先予定のファイルが既に存在するときにはエラーが出ます(ファイルあるよ！)。
+その他は割愛します！
+
+Import方法は？
+
+COPY (テーブル名) FROM '(ファイルパス)' DELIMITER E'\t' WITH NULL AS '';
+
+TOをFROMにするとインポートできる。
+

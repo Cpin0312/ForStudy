@@ -1,0 +1,19 @@
+Java installe 手順
+1.インストール先のディレクトリに移動します。次のように入力します。
+cd /usr/java
+
+2.Java存在確認
+$(dirname $(dirname $(readlink -f $(which java))))
+
+Javaが存在する場合
+Javaパッケージの以前のインストールをアンインストールします。 
+rpm -e jre1.8-1.8.0_202-fcs.x86_64 
+
+3.パッケージをインストールします。(-i install, -v information, -h installprocess)
+rpm -ivh jre-8u202-linux-x64.rpm
+
+4.Javaパスの確認
+$(dirname $(dirname $(readlink -f $(which java))))
+
+
+※20190808の確認 : /usr/java/jre1.8.0_202-amd64

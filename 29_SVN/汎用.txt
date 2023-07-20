@@ -1,0 +1,17 @@
+Checkout
+svn co DDL\PI\ORACLE\allcreate.sql
+
+差分名
+svn diff --summarize
+
+ログ
+svn log -l 1
+
+ファイル戻し
+svn revert DDL\PI\ORACLE\allcreate.sql
+
+Status
+svn st
+
+更新
+svn up DDL\PI\ORACLE\allcreate.sql

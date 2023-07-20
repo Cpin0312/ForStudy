@@ -1,0 +1,178 @@
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/abator-config_1_0.dtd">
+<abatorConfiguration>
+  <abatorContext>    <!-- TODO: Add Database Connection Information -->
+    <jdbcConnection driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://localhost:5433/dbspcuser"
+        userId="spcuser"
+        password="spcuser">
+            <classPathEntry location="./postgresql-42.2.5.jar" />
+    </jdbcConnection>
+    <!-- Batch -->
+    <javaModelGenerator targetPackage="jp.hitachisoft.jfk.batch.common.db.bean" targetProject=".\java"   type="org.apache.ibatis.abator.extra.BatchJFKModelGenerator"/>
+    <sqlMapGenerator targetPackage="jp.hitachisoft.jfk.batch.common.db.sqlmap" targetProject=".\java" type="org.apache.ibatis.abator.extra.BatchJFKSqlMapGenerator"/>
+    <daoGenerator targetPackage="jp.hitachisoft.jfk.batch.common.db.dao" targetProject=".\java" type="org.apache.ibatis.abator.extra.BatchJFKDaoGenerator"/>
+    <table  tableName="M_ADDRESS_CODE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_APL_LOGIN_CTL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_AREA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_BEACON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_BUMON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CARD" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CARD_KBN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CARD_STATUS" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CARD_TYPE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_KIND_DETAIL1" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_KIND_DETAIL2" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_KIND_DETAIL3" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_NOTICE_MESSAGE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_RESP_LIST" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_SEND_LIST" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_CLAIM_VOC_FORMAT" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_COUNTRY" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_ENSEN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_EVENT_CD" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_EVOUCHER_USE_STORE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_FAVORITE_KIND" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_FLOOR" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_FURIKOMIBI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_GORIYOU_NAIYOU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_GYOSHU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_HIDUKE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_HOLIDAY" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_INFOX" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_INFOX_RECEIPT_DEFAULT_MESSAGE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_INFOX_SAIBANWAKU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIAGE_TUJO_INCENTIVE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIAGE_TUJO_INCENTIVE_M" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_FAVORITE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_KANRI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_NO_INIT_ISSUE_CTL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_SEC_ORG" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_SEC_ORG_DISP_ORDER" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_SEC_ORG_ITEM_NM" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_SEC_ORG_NM" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIIN_STATUS" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIINILIST_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAIINILIST_SHOSAI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_2G_DET" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_2G_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_3G_DET" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_3G_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_DET" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_G_DET" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_G_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KAMEITEN_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KESAI_JOUHOU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KIKAN_POINT_ZANDAKA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KOZA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_KOZA_SHUKEI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_LANG" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_MAIL_TEMPLATE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_ME_CAMPAIGN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_MYPG_LOGIN_CTL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_NATIONALITY" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_OSHIRASE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_PARAMETER" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_PERSON_INFO_HANTEI_KIJUN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_POINT_JOUHOU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_PRDCT_DISP_MNG" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_PRIPOCHECKER" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_PUSH_KIHON" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_PUSH_TEST_TANMATSU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_QUESTION" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_RANK" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_RANK_HANTEI_KIJUN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SD_CAMPAIGN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SITE_LOGIN_CTL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SP_RANK" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SP_RANK_RSN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SYOHIN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SYOHIN_CATEGORY" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SYOHIN_ZAIKO" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SYOZAI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_SYSTEM_YOYAKU_SOSHIKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_US_CAMPAIGN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="M_WEDDING_HOTEL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_ADDRESS_LAUNDERING_HISTORY" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_BAT_SYORI_COND" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CAMPAIGN_ENTRY_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CAMPAIGN_INCENTIVE_ADD" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CAMPAIGN_KAMEITEN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CAMPAIGN_RIYOJISSEKI_SYUKEI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CANCEL_URIAGE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CARD_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_CLAIM_INFO" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_FILE_UPLOAD_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_FUSEI_TORIHIKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_IKKATU_BAT_KEKKA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_IKKATU_KIKAN_POINT_YOYAKU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_IKKATU_POINT_YOYAKU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_INFOX_NET_RENKEIZUMI_INFOX" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_INFOX_RECEIPT_DEFAULT_MESSAGE_URIBA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_INFOX_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_INFOX_RIREKI_ICHIRAN_HYOJIYOU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_INFOX_RIREKI_SYOSAI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_ISSUE_CARD_APPL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_ITEM_EXCHANGE_INFO" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_ERR_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_FAVORITE_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_KENSAKU_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_NO_INIT_ISSUE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_SEC_ORG_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_SYOSAI_SYOKAI_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_TMP" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_TMP_FAVORITE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAIIN_TOUGOU_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_2G_PT_SHUKEI_GETUJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_2G_PT_SHUKEI_NITIJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_3G_PT_SHUKEI_GETUJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_3G_PT_SHUKEI_NITIJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_G_PT_SHUKEI_GETUJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_G_PT_SHUKEI_NITIJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_PT_SHUKEI_GETUJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KAMEITEN_PT_SHUKEI_NITIJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KARI_POINT" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KOZA_MEISAI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_KOZA_PT_KAMEITEN_SHUKEI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_MAIL_HAISHIN_HUTATSU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_MAIL_HAISHIN_YOYAKU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_NO_MATCH_CHECK_LIST" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_PARTITION" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_POINT_KOKAN_JOGEN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_POINT_SHUKEI_GETUJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_POINT_SHUKEI_NITIJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_POINT_SYOHI_RIREKI_RUISEKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_POINT_SYOHI_RIREKI_TOUJITU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_POINT_TOTUGO_KEKKA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_PRODUCT_UPDATE_HISTORY" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_PT_HENDOU_ERROR" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_QUESTION_KAITO_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_QUESTION_TOKEN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_RANKUP_NOTICE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_RIYO_PT_SHUKEI_GETUJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_RIYO_PT_SHUKEI_NITIJI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SESSION" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SHIKIN_KESSAI_KEKKA" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SHIKIN_KESSAI_SHUKEI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SMILELINK_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SMILELINK_SEND_CTL" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SOSHIKI_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SOSHIKI_RIREKI_SYOSAI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SP_RANK_RIREKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_SPIRAL_RENKEI_INFO" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_TICKET_ERROR_MANAGE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_TICKET_MANAGE" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_TUU_NO" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_URIAGE_MEISAI_RUISEKI" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="T_URIAGE_MEISAI_TOUJITU" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="W_INFOX" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="W_KAMEITEN" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="W_KAMEITEN_2G" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="W_KAMEITEN_3G" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    <table  tableName="W_KAMEITEN_G" enableSelectByExample = "false" enableDeleteByExample = "false" selectByExampleQueryId = "false" modelType ="flat"></table>
+    
+</abatorContext>
+</abatorConfiguration>
+

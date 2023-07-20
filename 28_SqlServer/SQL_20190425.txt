@@ -1,0 +1,55 @@
+--DBクリア(空っぽになる)
+-- DROP SCHEMA public CASCADE;
+-- CREATE SCHEMA public;
+-- GRANT ALL ON SCHEMA public TO postgres;
+-- GRANT ALL ON SCHEMA public TO public;
+
+--データのみ消す
+DELETE from  T_KAMEITEN_PT_SHUKEI_NITIJI;
+DELETE from  T_KAMEITEN_G_PT_SHUKEI_NITIJI;
+DELETE from  T_KAMEITEN_2G_PT_SHUKEI_NITIJI;
+DELETE from  T_KAMEITEN_3G_PT_SHUKEI_NITIJI;
+DELETE from  T_RIYO_PT_SHUKEI_NITIJI;
+DELETE from  T_POINT_SHUKEI_NITIJI;
+DELETE from  T_KAMEITEN_PT_SHUKEI_GETUJI;
+DELETE from  T_KAMEITEN_G_PT_SHUKEI_GETUJI;
+DELETE from  T_KAMEITEN_2G_PT_SHUKEI_GETUJI;
+DELETE from  T_KAMEITEN_3G_PT_SHUKEI_GETUJI;
+DELETE from  T_RIYO_PT_SHUKEI_GETUJI;
+DELETE from  T_POINT_SHUKEI_GETUJI;
+DELETE from  T_SHIKIN_KESSAI_SHUKEI;
+DELETE from  T_POINT_TOTUGO_KEKKA;
+DELETE from  T_SHIKIN_KESSAI_KEKKA;
+DELETE from  t_kaiin_syosai_syokai_rireki;
+DELETE from  t_kaiin_rireki;
+DELETE from  t_kaiin_kensaku_rireki;
+DELETE from  operate_log;
+DELETE from  T_URIAGE_MEISAI_TOUJITU;
+DELETE from  t_point_syohi_rireki_toujitu;
+DELETE from  m_card;
+DELETE from  m_koza_shukei;
+DELETE from  m_koza;
+DELETE from  m_kaiin_kihon;
+
+--日付の設定
+UPDATE m_hiduke SET BI = to_char(current_timestamp - interval '1 day', 'yyyyMMdd') WHERE KBN = '0';
+UPDATE m_hiduke SET BI = to_char(current_timestamp, 'yyyyMMdd') WHERE KBN = '1';
+UPDATE m_hiduke SET BI = to_char(current_timestamp, 'yyyyMMdd') WHERE KBN = '2';
+UPDATE t_bat_syori_cond SET BI = to_char(current_timestamp, 'yyyyMMdd');
+UPDATE m_parameter SET parameter_ti =  to_char(current_timestamp, 'dd') WHERE parameter_name = 'SIME_BI_DD';
+UPDATE T_PARTITION SET BI = to_char(current_timestamp, 'yyyyMMdd') WHERE partition_no = '0';
+UPDATE T_PARTITION SET BI = to_char(current_timestamp+ interval '1 day', 'yyyyMMdd') WHERE partition_no = '1';
+UPDATE T_PARTITION SET BI = to_char(current_timestamp- interval '1 day', 'yyyyMMdd') WHERE partition_no = '2';
+
+
+UPDATE m_parameter SET parameter_ti =  'SNYMALL' WHERE CATEGORY = 'MYPAGE' AND PARAMETER_NAME = 'KMT3G_ID';
+UPDATE m_parameter SET parameter_ti =  'SNYKL' WHERE CATEGORY = 'MYPAGE' AND PARAMETER_NAME = 'KMT2G_ID';
+UPDATE m_parameter SET parameter_ti =  'KLMALLA' WHERE CATEGORY = 'MYPAGE' AND PARAMETER_NAME = 'KMTG_ID';
+UPDATE m_parameter SET parameter_ti =  'KLSHOP01' WHERE CATEGORY = 'MYPAGE' AND PARAMETER_NAME = 'KMT_ID';
+
+
+
+INSERT INTO T_PARTITION VALUES (to_char(current_timestamp + interval '1 day', 'yyyyMMdd'),'1',to_char(current_timestamp, 'yyyymmddhh24missms'),'PI');
+INSERT INTO T_PARTITION VALUES (to_char(current_timestamp - interval '1 day', 'yyyyMMdd'),'2',to_char(current_timestamp, 'yyyymmddhh24missms'),'PI');
+
+

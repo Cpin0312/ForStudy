@@ -1,0 +1,128 @@
+JavaアプリをLinuxデーモン化の手順（社内向け）
+
+=====================================================================================================
+前提
+1.対象プロジェクト(lib,properties,*.jar)をLinux環境に配置済
+2.デーモン(Linux) = サービス(Windows)
+3.以降のコマンドはすべてLinuxの【spcuser】にて実行する。※【root】ではないこと
+4.リリース対象(/release)に格納してあります
+ ・ProtocolConverter.jar
+ ・ProtocolConverter.service
+ ・ProtocolConverter.sh
+ ・apache-commons-daemon-jsvc-1.0.13-7.el7.x86_64.rpm(ネットからJSVCをインストール場合は不要です)
+
+要確認・修正
+・init.properties
+	Listen先のアドレス、localhostに変更不可
+	1.HOST_ADDRESS=127.0.0.1
+	PIシステムのアドレス:ポート
+	2.API_SERVER_NAME=10.211.247.103:8080
+	Listen先のポート
+	3.START_PORT_NO=60001
+	スレッド数
+	4.THREAD_CNT=2
+
+・log4j.properties
+	【UTF-8】でないと、Linuxの化け文字になります
+	1.log4j.appender.aplLogAppender.Encoding=UTF-8
+	2.log4j.appender.aplLogAppender.Encoding=UTF-8
+=====================================================================================================
+
+
+==================↓ここからは窓口Ａから実行する（以降W01）↓========================================
+?フォルダの作成
+mkdir -p /var/app/ProtocolConverter
+mkdir -p /var/app/logs/ProtocolConverter
+
+権限の付与
+sudo chmod 755 /var/app/ProtocolConverter
+sudo chmod 777 /var/app/logs/ProtocolConverter
+
+①デーモンファイルの準備
+下記ファイルをLinux対象ディレクトリに配置する
+・ProtocolConverter.sh ⇒ /var/app/ProtocolConverter/ProtocolConverter.sh
+・ProtocolConverter.service ⇒ /etc/systemd/system/ProtocolConverter.service
+
+②対象ファイルの権限を確認
+ll  /etc/systemd/system/ProtocolConverter.service
+ll  /var/app/ProtocolConverter/ProtocolConverter.sh
+
+◆確認事項 : この状態にする。
+-rwxr-xr-x. 1 root root  370  8月  6 16:00 ProtocolConverter.service
+-rwxr-xr-x. 1 root root 2331  8月  6 19:08 /var/app/ProtocolConverter/ProtocolConverter.sh
+
+権限は上記内容ではない場合、下記のコマンドを実行する。実行してから、②にて再確認する
+sudo chmod 755  /etc/systemd/system/ProtocolConverter.service
+sudo chmod 755  /var/app/ProtocolConverter/ProtocolConverter.sh
+
+③JSVCをインストールする(ネットワーク必須)
+sudo yum install jsvc
+
+④デーモンのリロードと設定（実行、停止など、と自動起動など）
+sudo systemctl daemon-reload
+自動起動設定
+sudo systemctl enable ProtocolConverter
+自動起動解除（解除したい場合のみ実行）
+sudo systemctl disable ProtocolConverter
+
+==================↑ここからは窓口Ａから実行する（以降W01）↑========================================
+
+
+◆確認手順（初回実行する前）
+==================↓ここからは窓口Ａから実行する（以降W01）↓========================================
+①初期化
+	ログの確認（存在しない結果を確認）
+	sudo more /var/app/ProtocolConverter/ProtocolConverter.err
+	more /var/app/logs/ProtocolConverter/converter_apl.log
+	more /var/app/logs/ProtocolConverter/converter_inout.log
+	ログが存在する際に、下記のコマンドを実行
+	sudo rm -rf /var/app/ProtocolConverter/ProtocolConverter.err
+	rm -rf /var/app/logs/ProtocolConverter/*
+	デーモンPIDの確認（存在しない結果を確認）
+	sudo cat /var/app/ProtocolConverter/ProtocolConverter.pid
+	存在する場合、
+	sudo kill 対象PID
+
+②サービスリスト
+systemctl list-unit-files -t service
+
+
+③サービスの起動(W1)
+	サービスの起動
+	sudo systemctl start ProtocolConverter
+	サービスの停止（ケースバイケース）
+	sudo systemctl stop ProtocolConverter
+	サービスの再起動（ケースバイケース）
+	sudo systemctl status ProtocolConverter
+	
+④プロセス確認
+ps -A | grep jsvc
+
+==================↑ここからは窓口Ａから実行する（以降W01）↑========================================
+
+==================↓ここからは窓口Ｂから実行する（以降W02）↓========================================
+①ロカールポートをLISTENする（別の窓口Ｂで実行する（以降W2））
+	Netcatのインストール
+	yum install nc
+	60001のポートをLISTENさせる
+	nc -kl 60001
+
+②下記の内容をコピーし（"【】"は外す）、【W2】にペストして、【Enter】キーを押す
+【2180000       Q          000516593112000      2C0210200001S77045000035100000025000000659   000000002       305935601234500397190101200@5B1@0000000360                      201101      710123450202                                                                                                                                                                                                                                                                                         000397000032000000000001  00000029  00000000000000000000000000                              000000000000000000000+0000000000000000000000000000+0000000000000000000000000000+0000000000000000000000000000+0000000000000000000000000000+0000000000000000000000000000+00000000000@                                                                                                                                                                                                                                                                                     】
+
+==================↑ここからは窓口Ｂから実行する（以降W02）↑========================================
+
+
+◆レスポンスを確認(W1・W2も可)
+more /var/app/ProtocolConverter/ProtocolConverter.err
+sudo more /var/app/logs/ProtocolConverter/converter_apl.log
+more /var/app/logs/ProtocolConverter/converter_inout.log
+
+
+※異常発生する際に、下記のログを確認
+sudo cat /var/log/messages
+sudo cat /var/log/secure
+
+
+============================================終了=====================================================
+

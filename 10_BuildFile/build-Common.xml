@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MIBO_BuildCommon" default="" basedir="..">
+
+	<!--// ======================================================= //
+		// distディレクトリにリリース物を集める
+		// ======================================================= // -->
+	<target name="make.dist.tomcat">
+
+		<!-- distディレクトリを削除 -->
+		<delete dir="${dist.dir.tomcat}" />
+		<delete file="${zippath.tomcat}" />
+
+		<!-- mibo直下 -->
+		<copy todir="${dist.dir.tomcat}" overwrite="true">
+			<fileset dir=".">
+				<include name="index.jsp" />
+				<include name="favicon.ico" />
+				<include name="index.html" />
+			</fileset>
+		</copy>
+		<!-- CSS -->
+		<copy todir="${dist.dir.tomcat}/css" overwrite="true">
+			<fileset dir="css/" id="css">
+				<include name="*.css" />
+			</fileset>
+		</copy>
+		<!-- img -->
+		<copy todir="${dist.dir.tomcat}/img" overwrite="true">
+			<fileset dir="img/" id="img">
+				<include name="custom" />
+				<include name="*.png" />
+				<include name="*.gif" />
+				<include name="*.ico" />
+			</fileset>
+		</copy>
+		<!-- js -->
+		<copy todir="${dist.dir.tomcat}/js" overwrite="true">
+			<fileset dir="js/" id="js">
+			</fileset>
+		</copy>
+
+		<!-- jsp -->
+		<copy todir="${dist.dir.tomcat}/jsp" overwrite="true">
+			<fileset dir="jsp/" id="jsp">
+			</fileset>
+		</copy>
+		<!-- usr -->
+		<copy todir="${dist.dir.tomcat}/usr" overwrite="true">
+			<fileset dir="usr/" id="usr">
+			</fileset>
+		</copy>
+		<!-- WEB-INF -->
+		<copy todir="${dist.dir.tomcat}/WEB-INF" overwrite="true">
+			<fileset dir="WEB-INF/" id="WEB-INF">
+				<include name="*.xml" />
+				<include name="*.jspf" />
+				<include name="conf/*.xml" />
+				<include name="lib/*.jar" />
+				<include name="taglibs/*.tld" />
+				<include name="template/_miExcelTemplate.xls" />
+				<include name="web.xml" />
+			</fileset>
+		</copy>
+		<!-- WEB-INF/classes -->
+		<copy todir="${dist.dir.tomcat}/WEB-INF/classes" overwrite="true">
+			<fileset dir="WEB-INF/classes" id="classes">
+			</fileset>
+		</copy>
+
+	</target>
+
+	<!--// ======================================================= //
+		// ディレクトリをzip化する
+		// ======================================================= // -->
+	<target name="makeZip">
+		<!-- zipファイル削除 -->
+		<delete file="${zipFilePath}" />
+		<!-- zipファイル作成 -->
+		<zip destfile="${zipFilePath}" basedir="${zipTargetDir}" />
+	</target>
+
+	<!--// ======================================================= //
+		// ビルドメイン
+		// ======================================================= // -->
+	<target name="CommonMain">
+
+		<echo>${dist.dir.tomcat}</echo>
+		<echo>${zippath.tomcat}</echo>
+
+		<!--// ============================== //
+			// リリース物収集
+			// ============================== // -->
+		<antcall target="make.dist.tomcat"></antcall>
+	</target>
+</project>

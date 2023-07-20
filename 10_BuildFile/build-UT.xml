@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Build-UT" basedir=".." default="Main">
+
+	<import file="build-Common.xml"/>
+
+	<property name="stage" value="ut"/>
+	<property name="dist.dir.tomcat" value="dist/mibo_tomcat"/>
+	<property name="zippath.tomcat" value="dist/mibo_tomcat.zip"/>
+
+	<!--// ======================================================= //
+		// メイン処理
+		// ======================================================= // -->
+	<target name="Main">
+		<!-- 共通処理 -->
+		<antcall target="CommonMain" ></antcall>
+
+		<!-- log4j.properties編集 -->
+		<echo>log4j.properties編集</echo>
+		<replace file="${dist.dir.tomcat}/WEB-INF/classes/log4j.properties"
+			token="@LOG_DIR@"
+			value="C:/SpcPoint/logs/mibo"></replace>
+
+		<replace file="${dist.dir.tomcat}/WEB-INF/classes/log4j.properties"
+			token="@LOG_LEVEL@"
+			value="INFO"></replace>
+
+		<!-- web.xml編集 -->
+		<echo>web.xml編集</echo>
+		<replace file="${dist.dir.tomcat}/WEB-INF/web.xml"
+			token="@CONF_PATH@"
+			value="C:/SpcPoint/GitLocal/git_hisol/prog/gyoumu/MIBO_Spring/dist/mibo_tomcat/WEB-INF/classes"></replace>
+		<replace file="${dist.dir.tomcat}/WEB-INF/web.xml"
+			token="@UPLOAD_TMP_DIR@"
+			value="/"></replace>
+
+	</target>
+
+</project>

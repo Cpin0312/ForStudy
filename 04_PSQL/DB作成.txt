@@ -1,0 +1,45 @@
+DBユーザ作成
+①create user ユーザ名 with password 'パスワード';
+②CREATE DATABASE DB名 OWNER ユーザ名 Encoding 'UTF8';
+
+DB確認
+\l 
+ユーザ確認
+\du 
+文字コード確認
+SHOW SERVER_ENCODING;
+
+
+必要な場合のみ実行
+①ALTER ROLE ユーザ名 SUPERUSER;
+②ALTER ROLE ユーザ名 CREATEDB;
+③ALTER ROLE ユーザ名 CREATEROLE;
+④ALTER ROLE ユーザ名 REPLICATION;
+
+
+GRANT ALL ON DB名 TO ユーザ名;
+
+UPDATE pg_database SET datistemplate = FALSE WHERE datname = 'template1';
+DROP DATABASE template1;
+CREATE DATABASE template1 LC_COLLATE = 'ja_JP.UTF-8' LC_CTYPE = 'ja_JP.UTF-8'  ENCODING = 'UTF8'  TEMPLATE = template0;
+UPDATE pg_database SET datistemplate = TRUE WHERE datname = 'template1';
+CREATE DATABASE sspcpostgre_external OWNER piadmin Encoding 'UTF8' template template0;
+update pg_database set encoding = pg_char_to_encoding('UTF8') where datname = 'sspcpostgre_external'
+
+
+
+# psqlで実行する
+# psql -U postgres 
+# パスワード : postgres
+
+
+# ユーザ名 : piadmin
+# パスワード : piadmin
+# Db名 : ctdb
+
+# Roleの作成
+Create role piadmin  with createdb createrole bypassrls login password 'piadmin';
+# 権限の付与
+grant piadmin to postgres;
+# DBの作成
+create database ctdb with owner piadmin encoding 'UTF8';

@@ -1,0 +1,60 @@
+$ sudo su
+$ useradd ftp-user
+$ passwd ftp-user # パスワード設定
+$ mkdir -p /var/www/ftp_dir
+$ chown ftp-user /var/www/ftp_dir
+$ chmod 755 /var/www/ftp_dir
+
+FTPインストール
+$ yum update
+$ yum install vsftpd -y
+
+FTPの初期設定
+$ cp /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.org
+$ vi /etc/vsftpd/vsftpd.conf
+# 以下を追記
+=======================================================================
+# userlist_fileで指定指定したユーザを有効にする（接続できる）
+userlist_enable=YES
+
+# アクセスファイル（/etc/hosts.allow, /etc/hosts.deny)をアクセス制御に利用しない
+tcp_wrappers=NO
+
+# パッシブモードの接続を許可する
+pasv_enable=YES
+
+# FTPサーバのIPアドレスを指定（パッシブモードで接続時）
+pasv_address=[固定IP]
+
+# ポート指定 
+pasv_min_port=60001
+pasv_max_port=60010
+
+# ドットから始まるファイルを含めた一覧を返す
+force_dot_files=YES
+
+# ファイル（またはディレクトリ）のタイムスタンプの表示をローカルタイムで表示する
+use_localtime=YES
+
+# 
+user_config_dir=/etc/vsftpd/user_conf
+
+/etc/vsftpd/vsftpd.conf
+ 
+# 以下のコメントを外す
+chroot_local_user=NO
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd/chroot_list
+=======================================================================
+
+FTPの接続用にユーザの登録
+$ vi /etc/vsftpd/chroot_list
+ftp-user
+$ mkdir /etc/vsftpd/user_conf
+$ vi /etc/vsftpd/user_conf/ftp-user
+local_root=/var/www/ftp_dir
+
+サービス起動
+$ /etc/init.d/vsftpd status
+$ /etc/init.d/vsftpd start
+$ /etc/init.d/vsftpd stop

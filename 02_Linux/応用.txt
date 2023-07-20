@@ -1,0 +1,225 @@
+SuperUserに変更
+su -
+
+解凍
+tar zxvf 対象.gz
+
+現在ディレクトリ
+cd ディレクトリ先
+
+【autoconf】のインストール
+yum install autoconf
+
+【SuperUser】
+sudo コマンド
+
+Javaの実行(※そのまま実行すると、Mainクラスが必要)
+①To fix it, append a & symbol to the end of the command, it executes the Java program in the background, and continue until it finished.
+java -jar example.jar &
+
+②If the above command get killed when you leave the SSH session, try to add nohup in front.
+nohup java -jar example.jar &
+
+内容確認
+ls 対象フォルダ・ファイル
+
+Netcatのコマンド
+-l, --listen               Bind and listen for incoming connections
+-k, --keep-open            Accept multiple connections in listen mode
+nc -kl 10.211.247.103 60001
+
+ファイル内容確認
+①cat 対象ファイル
+②more 対象ファイル
+
+ポート確認
+ss -ltu
+
+サービスリスト
+systemctl list-unit-files -t service
+service --status-all
+service --status-all | more
+service --status-all | grep ntpd
+service --status-all | less
+
+ファイル移動
+mv 移動元 移動先
+
+ファイルコピー（-r オプション：ディレクトリごとコピー）
+cp 移動元 移動先
+cp -r 移動元 移動先
+
+削除
+-f, --force : エラーメッセージを表示しない
+-r, -R      : ディレクトリも削除の対象とする
+-I          : 削除の対象が４つ以上の場合のみ削除の確認をする
+-v          : 削除の詳細表示
+rm -rf 対象
+
+ディレクトリ作成
+mkdir ディレクトリ
+親フォルダも作成可能
+mkdir -p ディレクトリ
+
+ファイル作成
+touch ファイル
+
+サービスの起動
+systemctl daemon-reload
+systemctl start  対象サービス
+systemctl status 対象サービス
+systemctl stop   対象サービス
+（自動起動設定）
+systemctl enable 対象サービス
+（自動起動解除）
+systemctl disable 対象サービス
+
+権限のセットアップ（chmod モード 対象ファイル名）
+4 r 読み取り
+2 w 書き込み
+1 x 実行
+
+意味
+u ユーザー
+g グループ
+o その他
+a すべて
+
+意味
+= 指定した権限にする
++ 指定した権限を付与する
+- 指定した権限を除去する
+
+chmod a+x  対象フォルダ・ファイル
+chmod 777  対象フォルダ・ファイル
+
+ファイル編集
+vi 対象ファイル
+
+権限の確認
+ll 対象フォルダ・ファイル
+chmod +x   /var/app/ProtocolConverter/ProtocolConverter.sh
+
+全プロセス確認
+ps -A | grep jsvc
+
+システムログ
+cat /var/log/messages
+cat /var/log/secure
+
+プロセスの強制停止
+kill 対象PID
+
+java homeの確認
+$(dirname $(dirname $(readlink -f $(which javac))))
+
+unninstall
+yum remove package name
+
+Install内容確認
+yum list installed
+
+ip?a
+
+cp コマンドの基本的な使い方
+-p または --preserve
+パーミッション・オーナー・グループ・タイムスタンプもそのままコピーする
+-R ディレクトリを再帰的にコピーする
+ディレクトリ dir1 以下に、ファイル foo・bar があった場合、
+% cp -R dir1 dir2
+は、ディレクトリ dir2 の下にディレクトリ dir1 をコピーする。つまり
+dir2/dir1/foo
+dir2/dir1/bar
+というファイルが新たに作成される。一方、
+% cp -R dir1/ dir2
+とすると (`/'を付けると)、dir2 の下に dir1 以下のファイル・ディレクトリをコピーする。つまり
+dir2/foo
+dir2/bar
+
+grep
+-i 大文字小文字区別しない
+-r ディレクトリも検索対象
+例 :  grep　-i -r folderpath
+例 :  grep　-i folderPath/*
+
+tailf
+ログファイルの追加分を追跡する
+例 : tailf filePath
+RPMベースのLinux x64版Javaのインストール方法
+1. suを実行し、スーパーユーザーのパスワードを入力して、rootになります。
+2. インストール先のディレクトリに移動します。次のように入力します。
+cd directory_path_name
+たとえば、ソフトウェアを/usr/java/ディレクトリにインストールするには、次のように入力します。
+cd /usr/java
+
+3. Javaパッケージの以前のインストールをアンインストールします。
+rpm -e package_name
+
+4. パッケージをインストールします。
+rpm -ivh jre-8u73-linux-x64.rpm
+
+パッケージをアップグレードする場合:
+rpm -Uvh jre-8u73-linux-x64.rpm
+
+5. ディスクの空き容量を増やしたい場合は、.rpmファイルを削除します。
+6. rootシェルを終了します。再起動の必要はありません。
+
+inumの取得
+ll -i
+rm -r `find -inum  34470759`
+
+find / -name *startup.sh
+
+syslogのパス
+/var/log
+
+
+Loggerのパス
+/var/log/messages
+
+全部にパラメタを取得
+echo $@
+
+3番以降パラメタを取得
+echo ${@:3:($#-2)}
+
+現在ログインしているユーザ
+who
+
+/etc/passwdファイルをのぞいてみる
+cat /etc/passwd
+
+CentOsバージョン確認
+cat /etc/redhat-release
+
+自動起動の確認
+chkconfig --list | grep postgresql
+
+自動起動に設定
+chkconfig postgresql on
+chkconfig postgresql off
+
+
+二項演算子が予期されます
+⇒あるはずがない
+
+サイズ変更
+truncate -s 100 ファイル
+
+コマンド節約
+find ./  -maxdepth 1 -type f -name "*" | xargs -I{} mv {} ./tmp/
+
+フォルダzip
+zip -e -r --password=yourpassword XXX.zip youFolder
+
+ファイル
+zip -e --password=yourpassword XXX.zip youFile
+
+ディスクサイズ確認
+df -h
+
+ディスクサイズ拡張
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifyhd --resize 32768 centos.vdi
+
+Treeコマンドの代わり
+ find ./ -type d > path.txt

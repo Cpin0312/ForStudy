@@ -1,0 +1,32 @@
+Select
+Current_timestamp as "åªç›éûçè",
+datid,
+datname,
+pid,
+usesysid,
+usename,
+application_name,
+client_addr,
+client_hostname,
+client_port,
+TO_CHAR(backend_start,'YYYYMMDDHH24MISSMS') as backend_start,
+xact_start,
+query_start,
+state_change,
+wait_event_type,
+wait_event,
+state,
+backend_xid,
+backend_xmin,
+query,
+backend_type
+from 
+pg_stat_activity where datname in ('sspcPostgre','sspcPostgre2')
+
+;
+
+
+WHEN client_addr = '10.240.140.11' then 'AP1'
+WHEN client_addr = '10.240.140.14' then 'BAT'
+WHEN client_addr = '10.240.140.16' then 'MI'
+WHEN client_addr = '10.240.192.102' then 'ì•Ç›ë‰ÇQ'

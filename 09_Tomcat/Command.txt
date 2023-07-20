@@ -1,0 +1,6 @@
+Uninstall
+tomcat8 //DS//Tomcat8
+
+install 
+service install Tomcat8
+¦Tomcat8‚Ìê‡,JAVA_HOME‚ÆJRE_HOME‚ª•K—v‚Å‚·

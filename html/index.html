@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" type="text/css" href="./myCss.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(function(){
+            console.log("Start");
+        	//4
+			$("div.btn-space").on("click",function(){
+            	document.getElementsByClassName("btn")[0].innerText = "fadeIn";
+            	$("div.img-space").fadeToggle(2000,function(){document.getElementsByClassName("btn")[0].innerText = "fadeOut";});
+            	$("div.img-space").fadeToggle(2000);
+			});
+
+			$("#button").click(function(){
+				var str = $("#value").val();
+				var count = str.length;
+				if (count > 0 && str != "1"){
+					alert(str);
+				} else if(str == "1"){			
+					$('#box').css('background-color', 'red');
+					$('#box').css('color', 'red');
+				} else {
+					alert("なんらか入力してね");
+				}
+			});
+			
+    
+            
+        });
+        </script>
+    </head>
+    <body>
+        <div class="space">
+            <div class="btn-space">
+                <button class="btn" type="submit">Hello</button><br>
+            </div>
+            <div class="img-space">
+                <img class="img" src="./pikachu.jpg">
+            </div>
+            <input type="text" id="value">
+            <input type="button" id="button" value="Button">
+            <div id=box>
+        </div>
+    </body>
+</html>

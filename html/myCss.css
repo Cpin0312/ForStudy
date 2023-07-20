@@ -1,0 +1,21 @@
+.space { 
+	color: red; 
+	font-weight: bold;
+}
+.btn-space { 
+	color: red; 
+	font-weight: bold;
+}
+.btn { 
+	color: red; 
+	font-weight: bold;
+}
+.img-space { 
+	color: red; 
+	font-weight: bold;
+}
+#box{
+	width: 500px;
+	height: 500px;
+	background: #dce9f9;
+}

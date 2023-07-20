@@ -1,0 +1,2 @@
+権限関係なく、コマンドプロンプトにて実行
+"C:\Program Files (x86)\OpenOffice.org 3\program\soffice.exe" "-accept=socket,port=8100;urp;StarOffice.ServiceManager"-nologo -headless -nofirststartwizard -nocrashrep ?norestore

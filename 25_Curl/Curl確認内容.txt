@@ -1,0 +1,68 @@
+
+*******************************パターン①**************************************************************
+※【aaa.txt】は直下にあるファイル
+コマンド : curl -X POST -H "Content-Type: multipart/form-data;charset=SJIS" -F file="@aaa.txt" http://localhost:8080/mS/MailServer
+--------------------------cd062ff4a8da10d5
+Content-Disposition: form-data; name="file"; filename="aaa.txt"
+Content-Type: text/plain
+
+AROHAAROHA
+ああああああ
+asdasdasdad
+確認確認確認
+--------------------------cd062ff4a8da10d5--
+
+**************************************************************************************************************
+
+
+
+*******************************パターン②**************************************************************
+※【aaa.txt】は直下にあるファイル
+※ロジックにSJISの定義あり
+コマンド : curl -X POST -H "Content-Type: multipart/form-data" -F file="@aaa.txt" http://localhost:8080/mS/MailServer
+--------------------------27a7461cb8072fe9
+Content-Disposition: form-data; name="file"; filename="aaa.txt"
+Content-Type: text/plain
+
+AROHAAROHA
+ああああああ
+asdasdasdad
+確認確認確認
+--------------------------27a7461cb8072fe9--
+**************************************************************************************************************
+
+
+*******************************パターン③**************************************************************
+※ファイルパスはフルパス
+コマンド : curl -X POST -H "Content-Type: multipart/form-data;charset=SJIS" -F file="@C:\Users\hisol\Desktop\test\sample.txt" http://localhost:8080/mS/MailServer
+--------------------------9ee5faa938f58c68
+Content-Disposition: form-data; name="file"; filename="sample.txt"
+Content-Type: text/plain
+
+ｓだうぇくぁｗｓだｓｄあｓｄ
+あｓだｓだｓｄああｓｄ
+あｓだｓだｓだｓｄ
+asdasd
+asdasdasd
+ASFASFDLAKSJDLKAS
+656321321321
+
+
+
+asdasdasd
+993213212123
+ｓｄｆｓｄｆｓｄｆｓｄｆｓｄｆ
+あｓだｓｄだだ
+だだだだだ
+漢字間時間あｓかｓｄぁ
+
+
+
+
+
+
+
+あ
+!"#$%&'()=~|
+--------------------------9ee5faa938f58c68--
+**************************************************************************************************************

@@ -1,0 +1,25 @@
+postgres接続問題
+
+〇下記ファイルの修正が必要
+/var/lib/pgsql/9.4/data
+
+〇設定内容（pg_hba.con）
+# "local" is for Unix domain socket connections only
+#local   all             all                                     peer 
+local   all             postgres                                md5 
+# IPv4 local connections:
+#host    all             all             127.0.0.1/32            ident
+host    all             all             all                     md5
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+
+
+〇設定内容（pg_hba.conf）
+listen_addresses = '*'         # what IP address(es) to listen on;
+
+〇修正後にsサービスの再起動
+service postgresql-9.4 restart
+
+
+
+EXPLAINを先頭に付けるだけで、性能確認できる

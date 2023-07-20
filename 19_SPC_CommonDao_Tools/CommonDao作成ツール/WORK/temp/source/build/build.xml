@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<project name="PisCommonDao" default="mkjar" basedir=".">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- Ant build script for the Casino common library.                           -->
+<!--                                                                           -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- global properties -->
+  <property environment="env"/>
+  <property name="core_src_dir"        value="./src/core"/>
+  <property name="core_src_java_dir"   value="./src/core/java"/>
+  <property name="lib_dir"        value="./lib"/>
+  <property name="class_dir"           value="./bin"/>
+  <property name="core_class_dir"      value="./bin/core"/>
+  <property name="doc_dir"             value="./doc"/>
+  <property name="build_dir"           value="./build"/>
+  <property name="dist_dir"            value="./dist"/>
+  <property name="spring_conf_dir"     value="./conf/jar/spring"/>
+  <property name="message_conf_dir"    value="./conf"/>
+  <property name="conf_jar_meta"		value="./conf/jar/META-INF"/>
+  <property name="jar_file"            value="pis-common-dao.jar"/>
+
+	  <property name="to_online_lib"    value="../PisOnline/lib"/>
+	  <property name="to_real_lib"    value="../PisReal/lib"/>
+	  <property name="to_batch_lib"    value="../PisBatch/lib"/>
+	  <property name="to_common_lib"    value="../PisCommon/lib"/>
+
+  <target name="clean">
+    <!-- Delete the build directories -->
+	<delete quiet="true" dir="${build_dir}"/>
+	<delete quiet="true" dir="${class_dir}"/>
+	<delete quiet="true" dir="${dist_dir}"/>
+    <!-- Set up the build directories -->
+    <mkdir dir="${build_dir}"/>
+    <mkdir dir="${class_dir}"/>
+    <mkdir dir="${dist_dir}"/>
+  </target>
+
+
+  <!-- Build the casino-common jar -->
+  <target name="mkjar" depends="clean">
+  	<!-- Set up the compilation target directory -->
+  	<mkdir dir="${core_class_dir}"/>
+
+  	<!-- compile the source files -->
+  	<javac debug="yes" srcdir="${core_src_java_dir}" destdir="${core_class_dir}"
+		includes="**/*.java"
+  		encoding="MS932"
+  	>
+      	<classpath>
+      	  <pathelement path="${java.class.path}"/>
+
+      		<pathelement location="${lib_dir}/jfk.jar"/>
+	        <pathelement location="${lib_dir}/adtor.jar"/>
+            <pathelement location="${lib_dir}/ibatis-2.3.0.677.jar"/>
+        	<pathelement location="${lib_dir}/postgresql-9.0-802.jdbc4.jar"/>
+            <pathelement location="${lib_dir}/struts.jar"/>
+            <pathelement location="${lib_dir}/spring.jar"/>
+      		<pathelement location="${lib_dir}/message.jar"/>
+      		<pathelement location="${build_dir}"/>
+        </classpath>
+    </javac>
+
+    <copy todir="${core_class_dir}">
+    	<fileset dir="${core_src_java_dir}"
+    			includes="**/*.xml"
+    	>
+		</fileset>
+    	<fileset dir="${spring_conf_dir}"/>
+    	<fileset dir="${message_conf_dir}" includes="**/*.txt"> </fileset>
+    </copy>
+
+  	<!-- make the jar file -->
+  	<jar jarfile="${build_dir}/${jar_file}"
+    	  basedir="${core_class_dir}"
+    	  includes="**/*.class,
+  					**/*.properties,
+  					**/*.xml,
+  					**/*.txt
+  					"
+		  manifest="${conf_jar_meta}/MANIFEST.MF"
+  	>
+  	</jar>
+
+  </target>
+
+
+
+  <!-- make the javadocs -->
+  <target name="mkdoc">
+  	<javadoc sourcepath="${core_src_java_dir}"
+  		destdir="${doc_dir}"
+  		encoding="Shift_JIS"
+        author="true"
+        version="true"
+        use="true"
+  	>
+  	   	<packageset dir="${core_src_java_dir}"  defaultexcludes="yes">
+  	   		<include name="jp/hitachisoft/jkf/**"/>
+  	   	</packageset>
+        <classpath>
+          <pathelement path="${java.class.path}"/>
+  		  <pathelement location="${lib_dir}/jfk.jar"/>
+          <pathelement location="${lib_dir}/ibatis-2.3.0.677.jar"/>
+          <pathelement location="${lib_dir}/spring.jar"/>
+          <pathelement location="${lib_dir}/struts.jar"/>
+          <pathelement location="${lib_dir}/abator.jar"/>
+          <pathelement location="${lib_dir}/postgresql-9.0-802.jdbc4.jar"/>
+          <pathelement location="${lib_dir}/message.jar"/>
+          <pathelement location="${build_dir}"/>
+        </classpath>
+    </javadoc>
+  </target>
+
+
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- Build This project                                                -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <target name="all" depends="clean,mkjar">
+    <copy todir="${dist_dir}">
+    	<fileset dir="${build_dir}"/>
+    </copy>
+    <!--copy todir="${cus_out_jar_path}">
+    	<fileset dir="${build_dir}"/>
+    </copy>
+    <copy todir="${ope_out_jar_path}">
+      	<fileset dir="${build_dir}"/>
+    </copy-->
+  </target>
+
+
+	<!-- =================================
+          target: localCopy
+         ================================= -->
+    <target name="localcopy_mkjar" description="--> description">
+    	<antcall target="mkjar"/>
+    	<!--<copy file="${build_dir}/${jar_file}"  todir="${to_online_lib}"/>-->
+        <copy file="${build_dir}/${jar_file}"  todir="${to_real_lib}"/>
+        <copy file="${build_dir}/${jar_file}"  todir="${to_batch_lib}"/>
+        <copy file="${build_dir}/${jar_file}"  todir="${to_common_lib}"/>
+    </target>
+
+</project>

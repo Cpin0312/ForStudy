@@ -1,0 +1,121 @@
+かどうか Whether 
+アプリケーション障害運用確認	Application failure operation confirmation
+アンケート survey
+カスタマイズ機能	customization function
+ゼネコン協議	Adjust with General contractor
+テナント工事	Construction for Tenant
+テナント管理	Tenant Management
+ハード障害運用確認	Hard failure operation confirmation
+ポイント利用 DeductPT
+モバイル決済事業者	Mobile payment Service providers
+リーシング	Leasing
+中間レビュー	mid-term review
+主体内装	Main to body interior
+乗込	Boarding
+事前準備	Advance preparation
+休止状態 hibernate
+会計システム	Accounting system
+会議体	Conference Structure
+伝票	Sales Slip
+体制	Team Structure
+依頼	Request
+俯瞰図	Overview
+停止 Suspension
+傾向 Trend
+償還 redeem
+償還 redemption
+優先 preferred
+光ファイバー	optical fiber
+入会受付 Admission reception
+全体	Overall
+内部テスト	Internal testing
+凡例 legend
+分析	Analysis
+加盟店	Merchant
+即時 Immediate
+収納箱	storage box
+取得 Obtain
+取得 acquisition
+周辺業務	peripheral business
+商習慣	business practice
+場所	Location
+売上データ Sales Data
+変更完了連絡 Change completion notification
+外部システム	External System
+外部テスト	IF Test
+実施 Carry Out
+実質な会計 Payment Caption
+審査	examination
+導入	Implement
+工事	Construction
+年ごと per annum
+弱電設備	Light Electrical Equipment
+後付け Afterward
+払い戻し rebate
+採用	recruit
+提案 Proposal
+方法	Method
+方針 policy
+施設	Facility
+最終レビュー	final review
+有効 effective
+本番環境	Production environment
+本稼働	Go-live
+検査結果 VerificateReport
+検討	Consideration
+業務フロー	business flow
+機能要件	Functional requirements
+汎用 General
+決定	Decide・Confirm
+照合 Inquire about
+特典 privilege
+現地調整	Local Adjustment
+理解	Comprehend
+異常取引 Abnormal transactions
+疎通確認	Confirm network
+発票（中国語）	Receipt
+発行 Issue
+監査対応取引履歴 Audit transaction history
+矛盾 inconsistence
+確定	Decide・Confirm
+税制	Tax
+稼働	Operation
+稼働前後	before and after system operation
+精算	Settlement
+納期	delivery
+経営層	management level
+統合 Consolidation
+総合テスト	System Intergration Test(SIT)
+補正 Compensation
+要件定義	Requirement Definition
+設置	Install
+説明	Description・Explaination
+調査結果 InvestigateReport
+購入 Purchase
+返品 Item Return
+退会 Unsubscribe
+退会 Withdraw
+通常 Usual
+進め方	Procedures
+配信 Stream
+配信 broadcast
+配布 distributed
+金種	Denomination
+開発環境	Development Environment
+関連システム	related systems
+随時 Frequency
+障害 failure
+非機能要件	non-Functional requirements
+顧客管理	Customer Management
+売上金額 Sales amount
+持込 Bring-in (Carry On は飛行機専用)
+特有 specific of
+検討 consider
+データ保持期間 Data retention period
+経費精算  Expense Settlement
+目的 purpose
+負担 Burden
+原資 capital
+対応 correspondence
+設ける provided
+引き換える redeem

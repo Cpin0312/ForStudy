@@ -1,0 +1,30 @@
+	SELECT
+	    pg_class.relname AS "ロック対象のテーブル"
+	  , CASE WHEN pg_locks.granted = 't' THEN 'ロック中' ELSE 'ロック待ち' END AS "ロック状態"
+	  , pg_locks.mode AS "ロックレベル"
+	  , pg_stat_activity.state AS "トランザクションの状態"
+	  , pg_stat_activity.query AS "最後に実行されたクエリ"
+	  , pg_stat_activity.query_start AS "最後に実行されたクエリの開始時間"
+	  , CASE WHEN pg_stat_activity.state = 'active' THEN current_timestamp - pg_stat_activity.query_start END AS "経過時間"
+	FROM
+	  pg_locks
+	    INNER JOIN pg_stat_activity
+	            ON pg_locks.pid = pg_stat_activity.pid
+	    INNER JOIN pg_class
+	            ON pg_locks.relation = pg_class.oid
+	WHERE
+	      pg_locks.locktype = 'relation'
+	  AND pg_stat_activity.client_port != inet_client_port()
+	;
+	
+"============================================================================================================	
+	SELECT l.pid, db.datname, c.relname, l.locktype, l.mode
+	FROM pg_locks l
+	        LEFT JOIN pg_class c ON l.relation=c.relfilenode
+	        LEFT JOIN pg_database db ON l.database = db.oid
+	ORDER BY l.pid;
+	
+"============================================================================================================	
+
+	SELECT pg_cancel_backend(4580);
+"============================================================================================================	

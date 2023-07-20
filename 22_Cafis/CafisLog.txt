@@ -1,0 +1,3 @@
+sudo su - capsuser
+
+cd /opt/cafis/caps/log/msg : ‚ÅƒƒOŠm”F

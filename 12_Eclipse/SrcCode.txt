@@ -1,0 +1,2 @@
+配列マッチ
+Arrays.asList(arySiteKbn).stream().anyMatch(xx -> xx.equals(siteKbn));

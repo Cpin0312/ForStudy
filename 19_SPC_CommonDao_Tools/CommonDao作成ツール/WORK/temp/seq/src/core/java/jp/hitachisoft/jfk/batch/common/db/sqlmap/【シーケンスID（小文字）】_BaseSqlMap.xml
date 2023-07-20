@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="【シーケンスID】">
+
+    <select id="nextvalue" resultClass="java.lang.Long">
+        SELECT
+            NEXTVAL('【シーケンスID】') AS 【シーケンスID】
+    </select>
+    
+    <select id="nextvalue1" resultClass="java.lang.Long">
+        SELECT
+            【シーケンスID】.NEXTVAL AS 【シーケンスID】
+        FROM
+            DUAL
+    </select>
+</sqlMap>

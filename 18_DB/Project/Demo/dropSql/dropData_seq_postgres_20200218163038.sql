@@ -1,0 +1,22 @@
+ Drop sequence bonus_incentive_seq cascade;
+ Drop sequence card_kirikae_incentive_seq cascade;
+ Drop sequence card_kirikae_seq cascade;
+ Drop sequence fusei_torihiki_seq cascade;
+ Drop sequence ikkatu_bat_kekka_seq cascade;
+ Drop sequence ikkatu_pt_kikan_yoyaku_seq cascade;
+ Drop sequence ikkatu_pt_yoyaku_seq cascade;
+ Drop sequence jizen_nyukai_incentive_seq cascade;
+ Drop sequence kaiage_tujo_incentive_m_seq cascade;
+ Drop sequence kaiage_up_incentive_m_seq cascade;
+ Drop sequence kaiage_up_incentive_seq cascade;
+ Drop sequence kaiin_kensaku_rireki_seq cascade;
+ Drop sequence kaiin_no_seq cascade;
+ Drop sequence kaiin_rireki_seq cascade;
+ Drop sequence kaiin_syosai_syokai_rireki_seq cascade;
+ Drop sequence kaiin_tougou_seq cascade;
+ Drop sequence kari_uriage_no_seq cascade;
+ Drop sequence koza_no_seq cascade;
+ Drop sequence nyukai_incentive_seq cascade;
+ Drop sequence raiten_incentive_seq cascade;
+ Drop sequence uriage_no_seq cascade;
+

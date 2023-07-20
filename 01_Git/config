@@ -1,19 +1,18 @@
 [core]
+	symlinks = false
 	repositoryformatversion = 0
 	filemode = false
-	bare = false
 	logallrefupdates = true
-	symlinks = false
-	ignorecase = true
+	bare = false
 [remote "origin"]
-	url = https://github.com/Cpin0312/ForStudy.git
+	url = https://xxx.branch
 	fetch = +refs/heads/*:refs/remotes/origin/*
-[branch "master"]
+[svn-remote "svn"]
+	url = https://web.deplas.itg.hitachi.co.jp/menicoin/svn/trunk
+	fetch = :refs/remotes/git-svn
+[branch "Some-trunk"]
 	remote = origin
-	merge = refs/heads/master
-[branch "myBranch"]
-	remote = origin
-	merge = refs/heads/master
+	merge = refs/heads/Some-trunk
 [diff]
     tool = WinMerge
 [difftool "WinMerge"]
@@ -21,16 +20,10 @@
     cmd = \"D:/0_MyFolder/03_Installer/WinMerge/WinMergeU.exe\" -f \"*.*\" -e -u -r \"$LOCAL\" \"$REMOTE\"
 [merge]
     tool = WinMerge
-[mergetool "WinMerge"]
-    path = D:/0_MyFolder/03_Installer/WinMerge/WinMergeU.exe
-    cmd = \"D:/0_MyFolder/03_Installer/WinMerge/WinMergeU.exe\" -e -u \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [alias]
     windiff = difftool -y -d -t WinMerge
-    winmerge = mergetool -y -t WinMerge
-    sts = status
-    showlog = log --pretty=format:"[%H][%cd][%cn]:[%s]"
-    cmt = commit -m 
-
-
-
-
+    showlog = "!f(){ git log --pretty=format:"[%cd]:[%H][%cn][%s] --date=format:'%Y%m%d_%H%M%S' " $@ ;};f"
+    showAll = "!f(){ git log --oneline --decorate --graph --exclude=refs/stash $@ ;};f"
+[gui]
+	wmstate = normal
+	geometry = 813x435+243+299 342 196

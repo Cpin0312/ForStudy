@@ -1,0 +1,9 @@
+ローカルを戻す対象に戻す
+git reset --hard 0423535bb057eb264a1ebff88f3440a9fd28b0d6
+
+レポジトリの強制プッシュ
+git push -f origin hisol-trunk
+
+その以前に下記の設定が必要
+denyNonFastForward : false
+サイト⇒設定ファイル⇒Configファイル

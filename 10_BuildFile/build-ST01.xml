@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Build-ST01" basedir=".." default="Main">
+
+	<import file="build-Common.xml"/>
+
+	<property name="stage" value="st01"/>
+	<property name="dist.dir.tomcat" value="dist/${stage}/mibo"/>
+	<property name="zippath.tomcat" value="dist/${stage}/mibo.zip"/>
+
+	<!--// ======================================================= //
+		// メイン処理
+		// ======================================================= // -->
+	<target name="Main">
+		<!-- 共通処理 -->
+		<antcall target="CommonMain" ></antcall>
+
+		<!-- log4j.properties編集 -->
+		<echo>log4j.properties編集</echo>
+		<replace file="${dist.dir.tomcat}/WEB-INF/classes/log4j.properties"
+			token="@LOG_DIR@"
+			value="/opt/app/logs/mibo"></replace>
+
+		<replace file="${dist.dir.tomcat}/WEB-INF/classes/log4j.properties"
+			token="@LOG_LEVEL@"
+			value="INFO"></replace>
+
+		<!-- web.xml編集 -->
+		<echo>web.xml編集</echo>
+		<replace file="${dist.dir.tomcat}/WEB-INF/web.xml"
+			token="@CONF_PATH@"
+			value="/opt/app/PointInfinity/mibo/WEB-INF/classes"></replace>
+		<replace file="${dist.dir.tomcat}/WEB-INF/web.xml"
+			token="@UPLOAD_TMP_DIR@"
+			value="/opt/app/PointInfinity/tomcat_tmp/upload"></replace>
+
+		<!-- zip作成 -->
+		<antcall target="makeZip" >
+			<param name="zipTargetDir" value="dist/${stage}/mibo"></param>
+			<param name="zipFilePath" value="dist/${stage}/mibo.zip"></param>
+		</antcall>
+	</target>
+
+</project>

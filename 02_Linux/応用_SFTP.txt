@@ -1,0 +1,102 @@
+ユーザー・グルの確認
+less /etc/group
+ユーザーの確認
+less /etc/passwd
+
+/home/%u/.ssh/authorized_keys
+sudo mkdir -p  /home/sftpuser/.ssh/authorized_keys
+
+クライアントPCでキーペアを作成する
+(暗号方式:RSA,鍵長:2048bit)
+?ssh-keygen -t rsa -b 2048
+?ssh-keygen -t rsa -b 2048 -N "" -f ${file_name} 
+上書き
+?yes y |ssh-keygen -t rsa -b 2048 -N "" -f  >/dev/null
+〇yes y |ssh-keygen -t rsa -b 2048 -N "" -f /home/sftpuser/.ssh/id_rsa
+〇yes y |ssh-keygen -t rsa -b 2048 -N "" -f ~/.ssh/id_rsa
+
+初回ログイン
+ssh-keyscan sftpadmin@10.211.247.104 >> /home/sftpuser/.ssh/known_hosts
+ssh-keyscan sftpadmin@10.211.247.10 >> ~/.ssh/known_hosts
+
+秘密鍵：id_rsa
+公開鍵：id_rsa.pub
+
+公開鍵をリモートに転送する
+?scp /home/[user名]/.ssh/id_rsa.pub [リモートユーザー]@[リモートサーバーのホスト名]:~/.ssh
+?scp /home/spcuser/.ssh/id_rsa.pub sftpuser@10.211.247.104:~/.ssh
+?put /home/spcuser/.ssh/id_rsa.pub /home/sftpuser/.ssh/authorized_keys
+?ssh-copy-id -i /home/spcuser/.ssh/id_rsa_user01 sftpadmin@10.211.247.104
+?cat ~/.ssh/id_rsa.pub | ssh sftpuser@10.211.247.104
+?scp /home/sftpuser/.ssh/id_rsa_user01 sftpadmin@10.211.247.104:~/.ssh
+?scp /home/sftpuser/.ssh/id_rsa_user01 sftpadmin@10.211.247.104:/home/sftpadmin/test20190905
+?scp /home/sftpuser/.ssh/id_rsa_user01 sftpadmin@10.211.247.104:~/.ssh
+?ssh -i id_rsa sftpuser@10.211.247.104
+?ssh -i /home/sftpuser/.ssh/id_rsa_user01 sftpuser@10.211.247.104
+?sftp  -i /home/spcuser/.ssh/id_rsa sftpuser@10.211.247.104
+〇scp /home/sftpuser/.ssh/id_rsa.pub  sftpadmin@10.211.247.104:~/.ssh
+ssh -i ~/.ssh/id_rsa.pub sftpadmin@10.211.247.104
+ssh   sftpadmin@10.211.247.104
+
+scp /home/sftpuser/.ssh/id_rsa sftpadmin@10.211.247.104:~/.ssh
+
+vi /etc/ssh/sshd_config 
+sudo cat vi /etc/ssh/sshd_config 
+AuthorizedKeysFile .ssh/authorized_keys
+AuthorizedKeysFile /home/%u/.ssh/authorized_keys
+
+cd /home/ユーザー/.ssh/
+authorized_keysが無い場合
+touch authorized_keys
+chmod 600 authorized_keys
+cat ~/id_rsa.pub >> authorized_keys
+不要になったので消す。
+rm ~/id_rsa.pub
+cat ~/.ssh/id_rsa.pub | ssh hoge_user@hogehoge.hoge.com 'cat >> .ssh/authorized_keys'
+cat /home/sftpuser/.ssh/id_rsa.pub | ssh sftpadmin@10.211.247.104 'cat >> .ssh/authorized_keys'
+
+ssh-copy-id -i.ssh/id_rsa.pub sftp-user@10.211.247.104
+ssh-copy-id -i.ssh/id_rsa.pub sftpadmin@10.211.247.104
+ssh -i.ssh/id_rsa.pub sftpuser@10.211.247.104
+
+ssh -i /home/sftpuser/.ssh/id_rsa.pub sftpuser@10.211.247.104
+
+ユーザー削除
+userdel [ -r ]  login 
+
+ユーザー一覧
+cat /etc/passwd
+cut -d: -f1 /etc/passwd
+
+su - ユーザー
+
+ps -f 662
+kill 662
+# これで駄目なら
+kill -kill 662 # など
+
+グループ一覧
+cat /etc/group
+グループ削除
+groupdel グループ名
+
+/etc/ssh/.sshd_config.swp
+
+CentOS 環境へのインストール
+
+CentOS7 (※ 2016/6/25 追記)
+
+CentOS7 では以下の手順でインストール出来ます。
+yum install -y epel-release
+yum update
+yum install -y sshpass
+
+scp /home/sftpuser/.ssh/id_rsa.pub sftpadmin@10.211.247.104:~/.ssh
+service sshd restart
+.
+
+scp -p 10.211.247.103:/home/spcuser/.ssh/id_rsa.pub .sshd -t
+
+exec("/path/to/script.sh")
+
+exec sftpShell_get.sh

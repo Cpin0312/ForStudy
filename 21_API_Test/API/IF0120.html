@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><META content="IE=7.0000" http-equiv="X-UA-Compatible">
+<TITLE>IF0100</TITLE>
+<META content=IE=EmulateIE7 http-equiv=X-UA-Compatible>
+<META content="text/html; charset=Shift_JIS" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css href="style.css">
+<META name=GENERATOR content="MSHTML 11.00.9600.18666"></HEAD>
+<BODY>
+<FORM method=post action=http://localhost:18080/if0120.do><BR><LEFT><B>
+<P class=top1>Updating member information_IF0120</P></B></LEFT>
+<TABLE borderColor=#333333 cellSpacing=0 cellPadding=5 width=1180 border=1>
+  <TBODY>
+  <TR>
+    <TH bgColor=royalblue><FONT color=white>Item Name</FONT></TH>
+    <TH bgColor=royalblue><FONT color=white>Value</FONT></TH></TR>
+      <TR>    <TD>■Card no..</TD>    <TD><INPUT maxLength=100 size=100 name=CARD_NO></TD></TR>
+  <TR>    <TD>■Member no..</TD>    <TD><INPUT maxLength=100 size=100 name=KAIIN_NO></TD></TR>
+  <TR>    <TD>■Authentication password.</TD>    <TD><INPUT maxLength=100 size=32 name=NINSYO_PASSWD></TD></TR>
+  <TR>    <TD>■Requesting member store 3G ID.</TD>    <TD><INPUT maxLength=100 size=8 name=YOUKYU_KMT3G_ID></TD></TR>
+  <TR>    <TD>■Requesting member store 2G ID.</TD>    <TD><INPUT maxLength=100 size=8 name=YOUKYU_KMT2G_ID></TD></TR>
+  <TR>    <TD>■Requesting member store G ID.</TD>    <TD><INPUT maxLength=100 size=8 name=YOUKYU_KMTG_></TD></TR>
+  <TR>    <TD>■Requesting member store ID.</TD>    <TD><INPUT maxLength=100 size=8 name=YOUKYU_KMT_ID></TD></TR>
+  <TR>    <TD>■Card category.</TD>    <TD><INPUT maxLength=100 size=8 name=CARD_KBN></TD></TR>
+  <TR>    <TD>■Card status.</TD>    <TD><INPUT maxLength=100 size=1 name=CARD_STS></TD></TR>
+  <TR>    <TD>■Card expiration date.</TD>    <TD><INPUT maxLength=100 size=8 name=CARD_YUKO_KIGEN></TD></TR>
+  <TR>    <TD>■Card password.</TD>    <TD><INPUT maxLength=100 size=32 name=CARD_PASSWD></TD></TR>
+  <TR>    <TD>■Old card no..</TD>    <TD><INPUT maxLength=100 size=100 name=OLD_CARD_NO></TD></TR>
+  <TR>    <TD>■New membership incentive category (card).</TD>    <TD><INPUT maxLength=100 size=1 name=CARD_NYUKAI_INCENTIVE_KBN></TD></TR>
+  <TR>    <TD>■Card information remark 1.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO1></TD></TR>
+  <TR>    <TD>■Card information remark 2.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO2></TD></TR>
+  <TR>    <TD>■Card information remark 3.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO3></TD></TR>
+  <TR>    <TD>■Card information remark 4.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO4></TD></TR>
+  <TR>    <TD>■Card information remark 5.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO5></TD></TR>
+  <TR>    <TD>■Card information remark 6.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO6></TD></TR>
+  <TR>    <TD>■Card information remark 7.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO7></TD></TR>
+  <TR>    <TD>■Card information remark 8.</TD>    <TD><INPUT maxLength=100 size=360 name=CARD_BIKO8></TD></TR>
+  <TR>    <TD>■Member name.</TD>    <TD><INPUT maxLength=100 size=20 name=KAIIN_NAME></TD></TR>
+  <TR>    <TD>■Member name katakana.</TD>    <TD><INPUT maxLength=100 size=40 name=KAIIN_KANA></TD></TR>
+  <TR>    <TD>■Date of birth.</TD>    <TD><INPUT maxLength=100 size=8 name=BIRTHDAY></TD></TR>
+  <TR>    <TD>■Gender.</TD>    <TD><INPUT maxLength=100 size=1 name=SEX></TD></TR>
+  <TR>    <TD>■Postal code.</TD>    <TD><INPUT maxLength=100 size=7 name=POST_NO></TD></TR>
+  <TR>    <TD>■Address 1.</TD>    <TD><INPUT maxLength=100 size=40 name=ADDRESS1></TD></TR>
+  <TR>    <TD>■Address 2.</TD>    <TD><INPUT maxLength=100 size=40 name=ADDRESS2></TD></TR>
+  <TR>    <TD>■Address 3.</TD>    <TD><INPUT maxLength=100 size=40 name=ADDRESS3></TD></TR>
+  <TR>    <TD>■Phone number.</TD>    <TD><INPUT maxLength=100 size=12 name=TEL></TD></TR>
+  <TR>    <TD>■Cell phone number.</TD>    <TD><INPUT maxLength=100 size=13 name=CP_NO></TD></TR>
+  <TR>    <TD>■Email address (PC).</TD>    <TD><INPUT maxLength=100 size=100 name=MAIL_ADDRESS_PC></TD></TR>
+  <TR>    <TD>■Email address (cell).</TD>    <TD><INPUT maxLength=100 size=100 name=MAIL_ADDRESS_KEITAI></TD></TR>
+  <TR>    <TD>■Member password.</TD>    <TD><INPUT maxLength=100 size=32 name=KAIIN_PASSWD></TD></TR>
+  <TR>    <TD>■Email newsletter subscription category.</TD>    <TD><INPUT maxLength=100 size=1 name=MAIL_MAGAZINE_KBN></TD></TR>
+  <TR>    <TD>■Member status.</TD>    <TD><INPUT maxLength=100 size=1 name=KAIIN_STS></TD></TR>
+  <TR>    <TD>■Member classification code.</TD>    <TD><INPUT maxLength=100 size=2 name=KAIIN_CATEGORY></TD></TR>
+  <TR>    <TD>■Member attribute status.</TD>    <TD><INPUT maxLength=100 size=1 name=KAIIN_ATTR_UMU></TD></TR>
+  <TR>    <TD>■Member's rank.</TD>    <TD><INPUT maxLength=100 size=1 name=KAIIN_RANK></TD></TR>
+  <TR>    <TD>■Membership type.</TD>    <TD><INPUT maxLength=100 size=2 name=KAIIN_SBT></TD></TR>
+  <TR>    <TD>■Member store 3G ID.</TD>    <TD><INPUT maxLength=100 size=8 name=KMT3G_ID></TD></TR>
+  <TR>    <TD>■Member store 2G ID.</TD>    <TD><INPUT maxLength=100 size=8 name=KMT2G_ID></TD></TR>
+  <TR>    <TD>■Member store G ID.</TD>    <TD><INPUT maxLength=100 size=8 name=KMTG_ID></TD></TR>
+  <TR>    <TD>■Member store ID.</TD>    <TD><INPUT maxLength=100 size=8 name=KMT_ID></TD></TR>
+  <TR>    <TD>■Membership start date.</TD>    <TD><INPUT maxLength=100 size=8 name=NYUKAI_BI></TD></TR>
+  <TR>    <TD>■Membership end date.</TD>    <TD><INPUT maxLength=100 size=8 name=TAIKAI_BI></TD></TR>
+  <TR>    <TD>■Service member no..</TD>    <TD><INPUT maxLength=100 size=100 name=SVC_KAIIN_NO></TD></TR>
+  <TR>    <TD>■Service member name.</TD>    <TD><INPUT maxLength=100 size=40 name=SVC_KAIIN_NAME></TD></TR>
+  <TR>    <TD>■Service membership start date.</TD>    <TD><INPUT maxLength=100 size=8 name=SVC_NYUKAI_BI></TD></TR>
+  <TR>    <TD>■Service membership end date.</TD>    <TD><INPUT maxLength=100 size=8 name=SVC_TAIKAI_BI></TD></TR>
+  <TR>    <TD>■New membership incentive category (member).</TD>    <TD><INPUT maxLength=100 size=1 name=KAIIN_NYUKAI_INCENTIVE_KBN></TD></TR>
+  <TR>    <TD>■Corporate name.</TD>    <TD><INPUT maxLength=100 size=20 name=HOJIN_NAME></TD></TR>
+  <TR>    <TD>■Corporate name katakana.</TD>    <TD><INPUT maxLength=100 size=40 name=HOJIN_KANA></TD></TR>
+  <TR>    <TD>■Representative customer no..</TD>    <TD><INPUT maxLength=100 size=100 name=DAIHYO_KOKYAKU_NO></TD></TR>
+  <TR>    <TD>■Customer no..</TD>    <TD><INPUT maxLength=100 size=100 name=KOKYAKU_NO></TD></TR>
+  <TR>    <TD>■Member information remark 1.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO1></TD></TR>
+  <TR>    <TD>■Member information remark 2.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO2></TD></TR>
+  <TR>    <TD>■Member information remark 3.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO3></TD></TR>
+  <TR>    <TD>■Member information remark 4.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO4></TD></TR>
+  <TR>    <TD>■Member information remark 5.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO5></TD></TR>
+  <TR>    <TD>■Member information remark 6.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO6></TD></TR>
+  <TR>    <TD>■Member information remark 7.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO7></TD></TR>
+  <TR>    <TD>■Member information remark 8.</TD>    <TD><INPUT maxLength=100 size=360 name=KAIIN_BIKO8></TD></TR>
+  <TR>    <TD>■Currency ID.</TD>    <TD><INPUT maxLength=100 size=8 name=TUKA_ID></TD></TR>
+  <TR>    <TD>■Account status.</TD>    <TD><INPUT maxLength=100 size=1 name=KOZA_STS></TD></TR>
+  <TR>    <TD>■Account information remark 1.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_BIKO1></TD></TR>
+  <TR>    <TD>■Account information remark 2.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_BIKO2></TD></TR>
+  <TR>    <TD>■Account information remark 3.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_BIKO3></TD></TR>
+  <TR>    <TD>■Account information remark 4.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_BIKO4></TD></TR>
+  <TR>    <TD>■Account information remark 5.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_BIKO5></TD></TR>
+  <TR>    <TD>■Account summary information remark 1.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_SHUKEI_BIKO1></TD></TR>
+  <TR>    <TD>■Account summary information remark 2.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_SHUKEI_BIKO2></TD></TR>
+  <TR>    <TD>■Account summary information remark 3.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_SHUKEI_BIKO3></TD></TR>
+  <TR>    <TD>■Account summary information remark 4.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_SHUKEI_BIKO4></TD></TR>
+  <TR>    <TD>■Account summary information remark 5.</TD>    <TD><INPUT maxLength=100 size=360 name=KOZA_SHUKEI_BIKO5></TD></TR>
+  <TR>    <TD>■Operator ID.</TD>    <TD><INPUT maxLength=100 size=100 name=OPERATER_ID></TD></TR>
+
+  </TBODY></TABLE>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><INPUT type=submit value=Submit name=INFORMATION_BUTTON></FORM></TD></TR></TBODY></TABLE></BODY></HTML>
