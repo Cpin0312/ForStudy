@@ -46,5 +46,8 @@ git branch -vv
 
 git push -f origin HashId:ブランチ名
 // 明示的に上流ブランチを設定（２つは同義）
-$ git branch <ローカルブランチ名> -u <リモートブランチ名>
-$ git branch <ローカルブランチ名> --set-upstream-to=<リモートブランチ名>
+git branch <ローカルブランチ名> -u <リモートブランチ名>
+git branch <ローカルブランチ名> --set-upstream-to=<リモートブランチ名>
+
+ブランチ差分
+git diff origin/master --name-status >> 2023.txt
