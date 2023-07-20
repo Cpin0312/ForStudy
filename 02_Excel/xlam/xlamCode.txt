@@ -1,0 +1,85 @@
+Option Explicit
+
+Public Sub ShowMsg()
+
+    MsgBox "Hello" + Range("A1").Value + "XXX   " + ActiveSheet.Name
+
+End Sub
+
+'アドインを登録するVBA
+Public Function AddinAdd()
+    AddIns.Add ThisWorkbook.Path & "\AddinTest.xlam"
+End Function
+
+'アドインを有効化するVBA
+Sub AddinInstall()
+    AddIns("AddinTest").Installed = True
+End Sub
+
+'アドインマネージャーを表示するVBA
+Sub AddinManager()
+    Dim rtn
+    rtn = Application.Dialogs(xlDialogAddinManager).Show
+    If rtn = True Then
+        MsgBox "OK"
+    Else
+        MsgBox "キャンセル"
+    End If
+End Sub
+
+Sub GetAddins()
+    Dim objAddin As AddIn
+    For Each objAddin In AddIns
+        Debug.Print objAddin.FullName
+    Next
+End Sub
+
+Sub AdinAutoInstall()
+    Dim InstallPath
+    Dim AddinPath
+    Dim AddinFile
+    Dim AddinName
+    Dim xlApp
+    Dim fso
+    Dim wsh
+  
+    AddinName = "AddinTest" 'アドインのファイル名、アドイン名
+    AddinFile = AddinName & ".xlam"
+  
+    On Error Resume Next
+  
+    'Excelのインスタンス
+    Set xlApp = Application 'VBA
+    'Set xlApp = CreateObject("Excel.Application") 'VbScript
+  
+    '登録済対策
+    xlApp.AddIns(AddinName).Installed = False
+  
+    '使用するオブジェクトのインスタンス
+    Set wsh = CreateObject("WScript.Shell")
+    Set fso = CreateObject("Scripting.FileSystemObject")
+  
+    'アドインのファイル名、ここでは同一フォルダ
+    AddinPath = ThisWorkbook.Path & "\" 'VBA
+    'AddinPath = fso.GetFolder(".") & "\" 'VbScript
+  
+    'Addinsフォルダ、任意のフォルダを指定可能
+    InstallPath = wsh.SpecialFolders("Appdata") & "\Microsoft\Addins\"
+    'アドインファイルをコピー
+    fso.CopyFile AddinPath & AddinFile, InstallPath & AddinFile, True
+  
+    'アドイン登録
+    'xlApp.Workbooks.Add 'VbScript
+    xlApp.AddIns.Add InstallPath & AddinFile
+    xlApp.AddIns(AddinName).Installed = True
+    'xlApp.Quit 'VbScript
+  
+    '終了時の解放
+    Set wsh = Nothing
+    Set fso = Nothing
+    Set xlApp = Nothing
+  
+    MsgBox "インストール終了"
+End Sub
+
+
