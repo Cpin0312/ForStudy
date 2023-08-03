@@ -1,0 +1,31 @@
+﻿//キーボードマクロのファイル
+
+S_ReplaceAll('^((?!^\\s{1,}("name" : |"startDate" : |"endDate" : |"name": |"addressLocality" : |"addressRegion" : )).)*$', '', 772);	// すべて置換
+S_ReplaceAll('"', '', 36);	// すべて置換
+S_ReplaceAll('^    name : ', '@NAME@', 36);	// すべて置換
+S_ReplaceAll('^      startDate : ', '@SDATE@', 36);	// すべて置換
+S_ReplaceAll('^      endDate : ', '@EDATE@', 36);	// すべて置換
+S_SelectAll(0);	// すべて選択
+S_RTrim(0);	// 右(末尾)の空白を削除
+S_LTrim(0);	// 左(先頭)の空白を削除
+S_ReplaceAll('^name', '\\r\\nname', 36);	// すべて置換
+S_ReplaceAll('(@NAME@.*),', '$1', 36);	// すべて置換
+S_ReplaceAll(',\\R', '\\t', 36);	// すべて置換
+S_ReplaceAll('^name.+? (.+?)\\t.+?: (.+?)\\t.+?: (.*)', '$3\\t$2\\t$1', 36);	// すべて置換
+S_ReplaceAll('\\R', '@CRLF@', 36);	// すべて置換
+S_Copy(0);	// コピー
+S_ReplaceAll('@NAME@', '\\r\\n', 36);	// すべて置換
+S_ReplaceAll('@SDATE@|@EDATE@|@CRLF@', '\\t', 36);	// すべて置換
+S_ReplaceAll('\\t{1,}', '\\t', 36);	// すべて置換
+S_ReplaceAll('^(.+?)(\\t((.+?\\t){2})(.+?)(\\t.*))', '$1【$5】$2', 36);	// すべて置換
+
+//キーボードマクロのファイル
+S_ReplaceAll('^(((.+?)\\t){3}).+?\\t(.+?)\\t(.*)', '$1$4 $5', 36);	// すべて置換
+S_ReplaceAll('^(.+?)\\t(.+?)\\t(.+?)\\t(.+?)\\t', '$2\\t$1\\t$4', 36);	// すべて置換
+S_ReplaceAll('^(.+?)\\t(.+?)\\t(.*)', '$1 : 4$2 > $3', 36);	// すべて置換
+S_ReplaceAll(' : 4', ' : ', 36);	// すべて置換
+S_ReplaceAll('startDate : ', '', 36);	// すべて置換
+S_ReplaceAll(' > .*', '', 36);	// すべて置換
+
+
+S_ReDraw(0);	// 再描画
