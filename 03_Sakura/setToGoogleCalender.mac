@@ -1,0 +1,7 @@
+﻿//キーボードマクロのファイル
+S_TextWrapMethod(0);	// 折り返し方法
+S_ReplaceAll('^(.+?)-(.+?)-(.+?)\\t(.+?)-(.+?)-(.+?)\\t(.+?)(【(.+?)】)$', '$8$7,$1/$2/$3,0:00,$4/$5/$6,23:59,TRUE,$9,,FALSE', 4);	// すべて置換
+S_GoFileTop(0);	// ファイルの先頭に移動
+InsText("Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private");
+InsText("\r\n");
+S_ReDraw(0);	// 再描画

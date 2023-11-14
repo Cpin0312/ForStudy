@@ -1,32 +1,31 @@
 ﻿//キーボードマクロのファイル
+S_TextWrapMethod(0);	// 折り返し方法
 
-S_ReplaceAll('^((?!^\\s{1,}("name" : |"startDate" : |"endDate" : |"name": |"addressLocality" : |"addressRegion" : )).)*$', '', 772);// すべて置換
-S_ReplaceAll('"', '', 36);// すべて置換
-S_ReplaceAll('^    name : ', '@NAME@', 36);// すべて置換
-S_ReplaceAll('^      startDate : ', '@SDATE@', 36);// すべて置換
-S_ReplaceAll('^      endDate : ', '@EDATE@', 36);// すべて置換
+S_ReplaceAll('^((?!^\\s{1,}("@context|"name"|"startDate"|"endDate"|"addressLocality"|"addressRegion")).)*$', '', 772);// すべて置換
+S_ReplaceAll('^\\s{1,}"name"', '@NAME@', 36);// すべて置換
+S_ReplaceAll('^\\s{1,}"startDate"', '@SDATE@', 36);// すべて置換
+S_ReplaceAll('^\\s{1,}"endDate"', '@EDATE@', 36);// すべて置換
+S_ReplaceAll('^\\s{1,}"addressLocality"', '@ADDLOC@', 36);// すべて置換
+S_ReplaceAll('^\\s{1,}"addressRegion"', '@ADDREG@', 36);// すべて置換
+S_ReplaceAll('^\\s{1,}"name"', '', 772);// すべて置換
 S_SelectAll(0);// すべて選択
 S_RTrim(0);// 右(末尾)の空白を削除
 S_LTrim(0);// 左(先頭)の空白を削除
-S_ReplaceAll('^name', '\\r\\nname', 36);// すべて置換
-S_ReplaceAll('(@NAME@.*),', '$1', 36);// すべて置換
-S_ReplaceAll(',\\R', '\\t', 36);// すべて置換
-S_ReplaceAll('^name.+? (.+?)\\t.+?: (.+?)\\t.+?: (.*)', '$3\\t$2\\t$1', 36);// すべて置換
-S_ReplaceAll('\\R', '@CRLF@', 36);// すべて置換
-S_Copy(0);// コピー
-S_ReplaceAll('@NAME@', '\\r\\n', 36);// すべて置換
-S_ReplaceAll('@SDATE@|@EDATE@|@CRLF@', '\\t', 36);// すべて置換
-S_ReplaceAll('\\t{1,}', '\\t', 36);// すべて置換
-S_ReplaceAll('^(.+?)(\\t((.+?\\t){2})(.+?)(\\t.*))', '$1【$5】$2', 36);// すべて置換
 
 //キーボードマクロのファイル
-S_ReplaceAll('^(((.+?)\\t){3}).+?\\t(.+?)\\t(.*)', '$1$4 $5', 36);// すべて置換
-S_ReplaceAll('^(.+?)\\t(.+?)\\t(.+?)\\t(.+?)\\t', '$2~$3\\t$1\\t$4', 36);// すべて置換
-S_ReplaceAll('^(.+?)\\t(.+?)\\t(.*)', '$1 : 4$2 > $3', 36);// すべて置換
-S_ReplaceAll(' : 4', ' : ', 36);// すべて置換
-S_ReplaceAll('startDate : ', '', 36);// すべて置換
-S_ReplaceAll('endDate : ', '', 36);// すべて置換
-S_ReplaceAll(' > .*', '', 36);// すべて置換
+S_ReplaceAll('\\R', '\\t', 36);	// すべて置換
+S_ReplaceAll('"@context.+?,', '\\r\\n', 36);	// すべて置換
+S_ReplaceAll('(@NAME@.+?){3,}.*$', '', 772);	// すべて置換
+S_ReplaceAll('@(NAME|SDATE|EDATE|ADDLOC|ADDREG)@( |).+? ', '\\t', 36);	// すべて置換
+S_ReplaceAll('\\t{2,}', '\\t', 36);	// すべて置換
+S_SelectAll(0);// すべて選択
+S_RTrim(0);// 右(末尾)の空白を削除
+S_LTrim(0);// 左(先頭)の空白を削除
+S_ReplaceAll('^(.+?)\\t(.+?)\\t(.+?)\\t(.+?)\\t(.+?)\\t(.+?)$', '$2\\t$3\\t【$6】$1\\t$4\\t$5', 36);	// すべて置換
+S_ReplaceAll('"', '', 36);	// すべて置換
+S_ReplaceAll(',\\t', '\\t', 36);	// すべて置換
+S_ReplaceAll(',$', '', 36);	// すべて置換
+
 S_ReplaceAll('&amp;','&',0);
 S_ReplaceAll('&gt;','>',0);
 S_ReplaceAll('&lt;','<',0);
@@ -34,13 +33,14 @@ S_ReplaceAll('&quot;','"',0);
 S_ReplaceAll('&#39;','❜',0);
 S_ReplaceAll('&nbsp;',' ',0);
 S_ReplaceAll('~| : ','\\t',4);
-S_ReplaceAll('^[\\r\\n]+','',772);
 
 S_GoFileEnd(0);// すべて選択
 S_InsText("\r\n");// すべて選択
 S_SelectAll(0);// すべて選択
 S_SortAsc(0);// 選択行の昇順ソート
+S_Merge(0);// 選択行の昇順ソート
 S_GoFileTop(0);// すべて選択
+S_ReplaceAll('^[\\r\\n]+','',772);
 
 // ReplaceAll('&Lt;','≪',0);
 // ReplaceAll('&#10731;','⧫',0);
@@ -617,6 +617,5 @@ S_GoFileTop(0);// すべて選択
 // ReplaceAll('&yacute;','ý',0);
 // ReplaceAll('&yen;','¥',0);
 // ReplaceAll('&yuml;','ÿ',0);
-
 
 S_ReDraw(0);// 再描画
