@@ -24,6 +24,7 @@
     windiff = difftool -y -d -t WinMerge
     showlog = "!f(){ git log --pretty=format:"[%cd]:[%H][%cn][%s] --date=format:'%Y%m%d_%H%M%S' " $@ ;};f"
     showAll = "!f(){ git log --oneline --decorate --graph --exclude=refs/stash $@ ;};f"
+    gFind = ls-files
 [gui]
 	wmstate = normal
 	geometry = 813x435+243+299 342 196
